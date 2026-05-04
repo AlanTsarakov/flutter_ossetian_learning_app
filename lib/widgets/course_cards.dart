@@ -38,7 +38,7 @@ class CourseCards extends StatelessWidget {
                     clipBehavior: Clip.antiAlias,
                     child: CachedNetworkImage(
                       placeholder: (context, url) =>
-                          CircularProgressIndicator(),
+                          CircularProgressIndicator(padding: .all(5),),
                       errorWidget: (context, url, error) => Icon(Icons.error),
                       imageUrl: r.urlPhoto,
                       fit: BoxFit.cover,

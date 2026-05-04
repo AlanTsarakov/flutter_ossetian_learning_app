@@ -69,6 +69,14 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                 ],
               ),
             ),
+            Padding(
+              padding: EdgeInsetsGeometry.directional(
+                start: 16,
+                end: 16,
+                top: 8,
+              ),
+              child: Text(widget.course.description),
+            )
           ],
         ),
       ),
