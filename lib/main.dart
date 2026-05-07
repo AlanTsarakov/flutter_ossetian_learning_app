@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/interfaces/screen_with_title.dart';
-import 'package:flutter_ossetian_learning_app/screens/catalog_screen.dart';
-import 'package:flutter_ossetian_learning_app/screens/main_screen.dart';
-import 'package:flutter_ossetian_learning_app/screens/profile_screen.dart';
-import 'package:flutter_ossetian_learning_app/theme.dart';
-import 'package:flutter_ossetian_learning_app/util.dart';
+import 'package:flutter_ossetian_learning_app/features/courses_list/course_list.dart';
+import 'package:flutter_ossetian_learning_app/features/user_courses_list/user_courses_list.dart';
+import 'package:flutter_ossetian_learning_app/features/profile/profile.dart';
+import 'package:flutter_ossetian_learning_app/theme/theme.dart';
+import 'package:flutter_ossetian_learning_app/theme/util.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +19,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       themeMode: .system,
-      darkTheme: MaterialTheme(createTextTheme(context, "Roboto", "Roboto")).dark(),
-      theme: MaterialTheme(createTextTheme(context, "Roboto", "Roboto")).light(),
+      darkTheme: MaterialTheme(
+        createTextTheme(context, "Roboto", "Roboto"),
+      ).dark(),
+      theme: MaterialTheme(
+        createTextTheme(context, "Roboto", "Roboto"),
+      ).light(),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -36,19 +40,18 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentScreenIndex = 0;
-  List<Widget> screens = [
-    MainScreen(),
-    CatalogScreen(),
-    ProfileScreen()
-  ];
+  List<Widget> screens = [MainScreen(), CatalogScreen(), ProfileScreen()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Row(
-          children: [Text((screens[_currentScreenIndex] as ScreenWithTitle).getTitle())],
-          mainAxisAlignment: .center,),
+          mainAxisAlignment: .center,
+          children: [
+            Text((screens[_currentScreenIndex] as ScreenWithTitle).getTitle()),
+          ],
+        ),
       ),
       body: screens[_currentScreenIndex],
       bottomNavigationBar: NavigationBar(
@@ -57,10 +60,17 @@ class _MyHomePageState extends State<MyHomePage> {
           _currentScreenIndex = value;
         }),
         destinations: [
-        NavigationDestination(icon: Icon(Icons.favorite_border), label: "Главное"),
-        NavigationDestination(icon: Icon(Icons.search), label: "Каталог"),
-        NavigationDestination(icon: Icon(Icons.account_circle), label: "Профиль")
-      ]),
+          NavigationDestination(
+            icon: Icon(Icons.favorite_border),
+            label: "Главное",
+          ),
+          NavigationDestination(icon: Icon(Icons.search), label: "Каталог"),
+          NavigationDestination(
+            icon: Icon(Icons.account_circle),
+            label: "Профиль",
+          ),
+        ],
+      ),
     );
   }
 }

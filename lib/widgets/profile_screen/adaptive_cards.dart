@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AdaptiveCards extends StatelessWidget {
-  AdaptiveCards(this.width);
+  const AdaptiveCards(this.width, {super.key});
 
   final width;
 

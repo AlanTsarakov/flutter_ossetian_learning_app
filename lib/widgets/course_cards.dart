@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/repositories/course_repository_in_memory.dart';
-import 'package:flutter_ossetian_learning_app/screens/course_detail_screen.dart';
+import 'package:flutter_ossetian_learning_app/features/course/view/course_detail_screen.dart';
 
 final CourseRepositoryInMemory coursesRepository = CourseRepositoryInMemory();
 
@@ -36,17 +36,17 @@ class CourseCards extends StatelessWidget {
                     width: 80,
                     height: 80,
                     clipBehavior: Clip.antiAlias,
-                    child: CachedNetworkImage(
-                      placeholder: (context, url) =>
-                          CircularProgressIndicator(padding: .all(5),),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                      imageUrl: r.urlPhoto,
-                      fit: BoxFit.cover,
-                    ),
                     decoration: BoxDecoration(
                       color: Colors.primaries[i % Colors.primaries.length]
                           .withValues(alpha: 0.3),
                       borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: CachedNetworkImage(
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(padding: .all(5)),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      imageUrl: r.urlPhoto,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   const SizedBox(width: 16),

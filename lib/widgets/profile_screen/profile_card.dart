@@ -12,7 +12,7 @@ class ProfileCard extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Row(
           children: [
-            Container(width: 80, height: 80, child: Icon(Icons.account_circle, size: 80,)),
+            SizedBox(width: 80, height: 80, child: Icon(Icons.account_circle, size: 80,)),
             const SizedBox(width: 16),
             Expanded(
               child: Column(

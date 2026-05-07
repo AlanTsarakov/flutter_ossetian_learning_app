@@ -4,6 +4,8 @@ import 'package:flutter_ossetian_learning_app/widgets/profile_screen/adaptive_ca
 import 'package:flutter_ossetian_learning_app/widgets/profile_screen/profile_card.dart';
 
 class ProfileScreen extends StatefulWidget implements ScreenWithTitle {
+  const ProfileScreen({super.key});
+
   @override
   String getTitle() => "Профиль";
 
