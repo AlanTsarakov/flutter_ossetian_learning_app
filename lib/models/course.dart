@@ -6,7 +6,7 @@ class Course {
   final String author;
   final String urlPhoto;
   final String category;
-  
+
   const Course({
     this.id,
     required this.urlPhoto,
@@ -16,7 +16,7 @@ class Course {
     required this.author,
     required this.category,
   });
-  
+
   // Для отладки
   @override
   String toString() => 'Course(name: $name, category: $category)';
