@@ -3,10 +3,16 @@ import 'package:flutter_ossetian_learning_app/interfaces/screen_with_title.dart'
 import 'package:flutter_ossetian_learning_app/features/courses_list/course_list.dart';
 import 'package:flutter_ossetian_learning_app/features/user_courses_list/user_courses_list.dart';
 import 'package:flutter_ossetian_learning_app/features/profile/profile.dart';
+import 'package:flutter_ossetian_learning_app/repositories/abstract_course_repository.dart';
+import 'package:flutter_ossetian_learning_app/repositories/course_repository_in_memory.dart';
 import 'package:flutter_ossetian_learning_app/theme/theme.dart';
 import 'package:flutter_ossetian_learning_app/theme/util.dart';
+import 'package:get_it/get_it.dart';
 
 void main() {
+  GetIt.instance.registerSingleton<AbstractCourseRepository>(
+    CourseRepositoryInMemory(),
+  );
   runApp(const MyApp());
 }
 

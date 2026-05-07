@@ -1,7 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ossetian_learning_app/repositories/abstract_course_repository.dart';
 import 'package:flutter_ossetian_learning_app/repositories/course_repository_in_memory.dart';
 import 'package:flutter_ossetian_learning_app/features/course/view/course_detail_screen.dart';
+import 'package:get_it/get_it.dart';
 
 final CourseRepositoryInMemory coursesRepository = CourseRepositoryInMemory();
 
@@ -11,7 +13,9 @@ class CourseCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final courses = coursesRepository.getCoursesByCategory(category);
+    final courses = GetIt.I<AbstractCourseRepository>().getCoursesByCategory(
+      category,
+    );
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: courses.length,
