@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/models/course.dart';
@@ -31,14 +30,13 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                 Card(
                   clipBehavior: Clip.antiAlias,
                   child: CachedNetworkImage(
-                      placeholder: (context, url) =>
-                          CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => Icon(Icons.error),
-                      imageUrl: widget.course.urlPhoto,
-                      fit: BoxFit.cover,
-                      width: .maxFinite,
-                      height: MediaQuery.of(context).size.height * 0.3,
-                    ),
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    imageUrl: widget.course.urlPhoto,
+                    fit: BoxFit.cover,
+                    width: .maxFinite,
+                    height: MediaQuery.of(context).size.height * 0.3,
+                  ),
                 ),
                 // BackdropFilter(
                 //   filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
@@ -59,12 +57,22 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
               child: Row(
                 mainAxisAlignment: .spaceBetween,
                 children: [
-                  
-                  Text(widget.course.author, style: Theme.of(context).textTheme.labelSmall,),
-                  Column(children: [
-                    Text("Дата публикации:", style: Theme.of(context).textTheme.labelSmall,),
-                    Text("03.05.26", style: Theme.of(context).textTheme.labelSmall,),
-                  ],)
+                  Text(
+                    widget.course.author,
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        "Дата публикации:",
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
+                      Text(
+                        "03.05.26",
+                        style: Theme.of(context).textTheme.labelSmall,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -75,7 +83,7 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                 top: 8,
               ),
               child: Text(widget.course.description),
-            )
+            ),
           ],
         ),
       ),
