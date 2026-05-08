@@ -65,13 +65,6 @@ class FlashcardRepository {
     partOfSpeech: 'глагол',
     exampleSentence: 'Фыссын писмо.',
   ),
-  Flashcard(
-    id: '10',
-    ossetianWord: 'Зын',
-    russianWord: 'Трудный',
-    partOfSpeech: 'прилагательное',
-    exampleSentence: 'Зын куыст.',
-  ),
   ];
 
   List<Flashcard> getAll()
