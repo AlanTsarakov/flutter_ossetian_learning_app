@@ -5,6 +5,7 @@ import 'package:flutter_ossetian_learning_app/features/user_courses_list/user_co
 import 'package:flutter_ossetian_learning_app/features/profile/profile.dart';
 import 'package:flutter_ossetian_learning_app/repositories/abstract_course_repository.dart';
 import 'package:flutter_ossetian_learning_app/repositories/course_repository_in_memory.dart';
+import 'package:flutter_ossetian_learning_app/repositories/flashcard_repository.dart';
 import 'package:flutter_ossetian_learning_app/theme/theme.dart';
 import 'package:flutter_ossetian_learning_app/theme/util.dart';
 import 'package:get_it/get_it.dart';
@@ -12,6 +13,9 @@ import 'package:get_it/get_it.dart';
 void main() {
   GetIt.instance.registerSingleton<AbstractCourseRepository>(
     CourseRepositoryInMemory(),
+  );
+  GetIt.instance.registerSingleton(
+    FlashcardRepository(),
   );
   runApp(const MyApp());
 }
