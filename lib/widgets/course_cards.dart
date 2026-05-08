@@ -18,17 +18,18 @@ class CourseCards extends StatelessWidget {
       itemCount: courses.length,
       itemBuilder: (context, i) {
         final r = courses[i];
-        return GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute<void>(
-                builder: (context) => CourseDetailScreen(course: r),
-              ),
-            );
-          },
-          child: Card(
-            margin: const EdgeInsets.only(bottom: 12),
+        return Card(
+          margin: const EdgeInsets.only(bottom: 12),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) => CourseDetailScreen(course: r),
+                ),
+              );
+            },
             child: Padding(
               padding: const EdgeInsets.all(12),
               child: Row(

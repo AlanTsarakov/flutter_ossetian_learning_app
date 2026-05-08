@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ossetian_learning_app/features/cards_list/card_list.dart';
+import '../../features/flashcards_list/flashcards_list.dart';
 
 class AdaptiveCards extends StatelessWidget {
   const AdaptiveCards(this.width, {super.key});
@@ -23,16 +23,17 @@ class AdaptiveCards extends StatelessWidget {
     return Row(
       mainAxisAlignment: .spaceBetween,
       children: [
-        GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute<void>(
-                builder: (context) => CardsListScreen(),
-              ),
-            );
-          },
-          child: Card(
+        Card(
+          child: InkWell(
+            borderRadius: BorderRadius.circular(12),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) => CardsListScreen(),
+                ),
+              );
+            },
             child: SizedBox(
               width: width * 0.4,
               height: 80,
