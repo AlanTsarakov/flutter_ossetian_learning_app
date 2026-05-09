@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/interfaces/screen_with_title.dart';
-import 'package:flutter_ossetian_learning_app/widgets/profile_screen/adaptive_cards.dart';
-import 'package:flutter_ossetian_learning_app/widgets/profile_screen/profile_card.dart';
+import 'package:flutter_ossetian_learning_app/widgets/profile_screen/adaptive_cards_widget.dart';
+import 'package:flutter_ossetian_learning_app/widgets/profile_screen/profile_card_widget.dart';
 
 class ProfileScreen extends StatefulWidget implements ScreenWithTitle {
   const ProfileScreen({super.key});

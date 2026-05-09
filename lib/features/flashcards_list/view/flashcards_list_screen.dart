@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ossetian_learning_app/widgets/course_cards.dart';
-import 'package:flutter_ossetian_learning_app/widgets/flash_cards_list.dart';
+import 'package:flutter_ossetian_learning_app/widgets/flashcards_list_widget.dart';
 
 class CardsListScreen extends StatefulWidget {
   const CardsListScreen({super.key});

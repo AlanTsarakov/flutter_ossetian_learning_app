@@ -19,21 +19,16 @@ class ProfileCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Геор Гузитаев", style: Theme.of(context).textTheme.titleMedium),
-                  Text(
-                    "Топ 100",
-                    style: Theme.of(context).textTheme.bodySmall,
-                  ),
+                  Padding(padding: .all(10)),
                   Row(
                     children: [
                       Icon(Icons.star, size: 14, color: Colors.amber[700]),
-                      Text(' sd', style: Theme.of(context).textTheme.bodySmall),
-                      Text('sad', style: Theme.of(context).textTheme.bodySmall),
+                      Text('67', style: Theme.of(context).textTheme.bodySmall),
                     ],
                   ),
                 ],
               ),
-            ),
-            const Icon(Icons.chevron_right),
+            )
           ],
         ),
       ),
