@@ -5,6 +5,7 @@ class Flashcard extends StatefulWidget {
 
   final String ossetianWord;
   final String russianWord;
+  
 
 
   @override

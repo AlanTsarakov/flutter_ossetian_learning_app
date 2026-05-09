@@ -20,7 +20,6 @@ class CardsListScreenState extends State<CardsListScreen> {
       appBar: AppBar(
         title: Text(
           "Карточки",
-          style: Theme.of(context).textTheme.labelLarge,
         ),
         centerTitle: true,
       ),

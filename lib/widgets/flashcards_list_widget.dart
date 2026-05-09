@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/models/flashcard.dart';
-import 'package:flutter_ossetian_learning_app/features/course/view/course_detail_screen.dart';
 import 'package:flutter_ossetian_learning_app/repositories/flashcard_repository.dart';
 import 'package:get_it/get_it.dart';
 
@@ -19,12 +17,6 @@ class FlashCardsWidget extends StatelessWidget {
         final r = cards[i];
         return GestureDetector(
           onTap: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute<void>(
-            //     // builder: (context) => (),
-            //   ),
-            // );
           },
           child: Card(
             margin: const EdgeInsets.only(bottom: 12),
@@ -64,19 +56,9 @@ class FlashCardsWidget extends StatelessWidget {
                         ),
                         Row(
                           children: [
-                            Icon(
-                              Icons.star,
-                              size: 14,
-                              color: Colors.amber[700],
-                            ),
-                            Text(
-                              'Пусто',
+                            Text("Пример: ${r.exampleSentence}",
                               style: Theme.of(context).textTheme.bodySmall,
-                            ),
-                            Text(
-                              'Пусто',
-                              style: Theme.of(context).textTheme.bodySmall,
-                            ),
+                            )
                           ],
                         ),
                       ],

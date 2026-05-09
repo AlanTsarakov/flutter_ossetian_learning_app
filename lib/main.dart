@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_ossetian_learning_app/interfaces/screen_with_title.dart';
 import 'package:flutter_ossetian_learning_app/features/courses_list/course_list.dart';
 import 'package:flutter_ossetian_learning_app/features/user_courses_list/user_courses_list.dart';
 import 'package:flutter_ossetian_learning_app/features/profile/profile.dart';
@@ -27,15 +26,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        "/" :  (context) => MyHomePage(title: "Adam",),
+      },
       title: 'Flutter Demo',
-      themeMode: .system,
+      themeMode: .dark,
       darkTheme: MaterialTheme(
         createTextTheme(context, "Roboto", "Roboto"),
       ).dark(),
       theme: MaterialTheme(
         createTextTheme(context, "Roboto", "Roboto"),
       ).light(),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -55,14 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: .center,
-          children: [
-            Text((screens[_currentScreenIndex] as ScreenWithTitle).getTitle()),
-          ],
-        ),
-      ),
       body: screens[_currentScreenIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentScreenIndex,
