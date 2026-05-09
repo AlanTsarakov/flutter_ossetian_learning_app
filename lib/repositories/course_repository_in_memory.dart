@@ -6,7 +6,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
 
   final List<Course> _courses = [
     // ПОПУЛЯРНОЕ
-    const Course(
+    Course(
       name: 'Разговорный осетинский язык',
       description:
           'Базовый курс для начинающих. Научитесь говорить на основные темы: семья, еда, погода, работа.',
@@ -15,7 +15,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       category: 'Популярное',
       urlPhoto: "https://alpindustria.ru/UserFiles/Image/IMG_5372.jpg",
     ),
-    const Course(
+    Course(
       name: 'Осетинский алфавит и фонетика',
       description:
           'Изучите буквы, звуки и правильное произношение. 44 буквы осетинского алфавита.',
@@ -24,7 +24,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       category: 'Популярное',
       urlPhoto: "https://a.d-cd.net/AFsBdNI-oLjuEU6v8DseCnkB_8U-1920.jpg",
     ),
-    const Course(
+    Course(
       name: 'Грамматика осетинского языка',
       description:
           'Падежи, времена, склонения. Полный разбор грамматических правил с примерами.',
@@ -34,7 +34,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       urlPhoto:
           "https://ic.pics.livejournal.com/mg5642/66429722/1855716/1855716_original.jpg",
     ),
-    const Course(
+    Course(
       name: 'Осетинский для путешествий',
       description: 'Фразы и выражения для туристов в Северной и Южной Осетии.',
       rating: 4.6,
@@ -44,7 +44,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
     ),
 
     // НОВОЕ
-    const Course(
+    Course(
       name: 'Современный осетинский язык',
       description:
           'Новые слова, интернет-лексика, молодежный сленг. Актуальные разговорные темы 2024-2025.',
@@ -53,7 +53,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       category: 'Новое',
       urlPhoto: "https://a.d-cd.net/9doXPujbJ0RFe8wEF7RStcWNNZA-1920.jpg",
     ),
-    const Course(
+    Course(
       name: 'Осетинский в TikTok и соцсетях',
       description:
           'Как говорить на осетинском в интернете. Создание контента на родном языке.',
@@ -63,7 +63,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       urlPhoto:
           "https://static.tildacdn.com/tild3362-3564-4366-a637-366263366537/IMG_0258-1.jpg",
     ),
-    const Course(
+    Course(
       name: 'Деловой осетинский язык',
       description:
           'Ведение переговоров, деловая переписка, официальные документы на осетинском.',
@@ -72,7 +72,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       category: 'Новое',
       urlPhoto: "https://a.d-cd.net/eaeexzpJABAkaNB5CKjCrtt4BCs-1920.jpg",
     ),
-    const Course(
+    Course(
       name: 'Осетинские дигорские говоры',
       description:
           'Изучение дигорского диалекта. Отличия от иронского, особенности произношения.',
@@ -84,7 +84,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
     ),
 
     // ЛУЧШЕЕ
-    const Course(
+    Course(
       name: 'Осетинский язык: от А до Я',
       description:
           'Полный курс обучения с нуля до свободного владения. 100+ уроков, практика, тесты.',
@@ -93,7 +93,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       category: 'Лучшее',
       urlPhoto: "https://photocentra.ru/images/main120/1202132_main.jpg",
     ),
-    const Course(
+    Course(
       name: 'Осетинская литература и фольклор',
       description:
           'Изучение языка через нартский эпос, стихи Коста Хетагурова и современные тексты.',
@@ -102,7 +102,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       category: 'Лучшее',
       urlPhoto: "https://photocentra.ru/images/main117/1176131_main.jpg",
     ),
-    const Course(
+    Course(
       name: 'Мастер-класс: говорим как носитель',
       description:
           'Интонации, акценты, разговорные обороты. Убираем акцент и говорим естественно.',
@@ -111,7 +111,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
       category: 'Лучшее',
       urlPhoto: "https://f.otzyv.ru/f/20/06/216609/24/19082408275898562124.jpg",
     ),
-    const Course(
+    Course(
       name: 'Осетинский для детей и родителей',
       description:
           'Семейный курс. Игры, песни, диалоги для изучения языка всей семьей.',
@@ -171,5 +171,10 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
 
   List<String> getUniqueAuthors() {
     return _courses.map((c) => c.author).toSet().toList();
+  }
+  
+  @override
+  List<Course> getStartedCourses() {
+    return _courses.where((course) => course.isStarted == true).toList();
   }
 }

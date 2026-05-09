@@ -1,5 +1,6 @@
 class Course {
   final int? id;
+  bool isStarted = false;
   final String name;
   final String description;
   final double rating;
@@ -7,7 +8,7 @@ class Course {
   final String urlPhoto;
   final String category;
 
-  const Course({
+  Course({
     this.id,
     required this.urlPhoto,
     required this.name,
@@ -17,7 +18,10 @@ class Course {
     required this.category,
   });
 
-  // Для отладки
+  void markAsStarted() {
+    isStarted = true;
+  }
+
   @override
   String toString() => 'Course(name: $name, category: $category)';
 }

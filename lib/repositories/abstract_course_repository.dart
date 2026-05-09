@@ -11,6 +11,8 @@ abstract class AbstractCourseRepository {
 
   List<Course> getCoursesByCategory(String category);
 
+  List<Course> getStartedCourses();
+
   List<Course> getCoursesByRatingAbove(double minRating);
 
   List<Course> getCoursesByAuthor(String author);
