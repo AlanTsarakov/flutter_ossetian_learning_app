@@ -1,12 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ossetian_learning_app/widgets/profile_screen/adaptive_cards_widget.dart';
-import 'package:flutter_ossetian_learning_app/widgets/profile_screen/profile_card_widget.dart';
-
-import 'package:flutter/material.dart';
-
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -42,15 +35,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       _CustomListTile(
                         title: "Темная тема",
                         icon: Icons.dark_mode_outlined,
-                        trailing: Switch(
-                          value: _isDark,
-                          onChanged: (value) {
-                            setState(() {
-                              _isDark = value;
-                            });
-                          },
-                        ),
+                        onTap: () => _showFormSheet(context),
+                        // trailing: Switch(
+                        //   value: _isDark,
+                        //   onChanged: (value) {
+                        //     setState(() {
+                        //       _isDark = value;
+                        //     });
+                        //   },
+                        // ),
                       ),
+
                       const _CustomListTile(
                         title: "Напоминание",
                         icon: Icons.notifications_none_rounded,
@@ -90,16 +85,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ],
     );
   }
+
+  void _showFormSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      builder: (ctx) => Padding(
+        padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Form Sheet', style: Theme.of(context).textTheme.titleLarge),
+              const SizedBox(height: 16),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Name',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 12),
+              TextField(
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              const SizedBox(height: 24),
+              FilledButton(
+                onPressed: () => Navigator.pop(ctx),
+                child: const Text('Сохранить'),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 class _CustomListTile extends StatelessWidget {
   final String title;
   final IconData icon;
   final Widget? trailing;
+  final GestureTapCallback? onTap;
   const _CustomListTile({
     required this.title,
     required this.icon,
     this.trailing,
+    this.onTap,
   });
 
   @override
@@ -108,7 +144,7 @@ class _CustomListTile extends StatelessWidget {
       title: Text(title),
       leading: Icon(icon),
       trailing: trailing,
-      onTap: () {},
+      onTap: onTap,
     );
   }
 }

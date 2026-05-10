@@ -8,9 +8,6 @@ class CatalogScreen extends StatefulWidget {
   const CatalogScreen({super.key});
 
   @override
-  String getTitle() => "Курсы";
-
-  @override
   State<StatefulWidget> createState() => CatalogScreenState();
 }
 

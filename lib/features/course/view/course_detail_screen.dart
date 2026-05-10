@@ -27,6 +27,7 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
           children: [
             Expanded(
               child: ListView(
+                shrinkWrap: true,
                 children: [
                   Stack(
                     children: [
@@ -89,18 +90,40 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                     ),
                     child: Text(widget.course.description),
                   ),
+
+                  ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: widget.course.totalLessons,
+                    itemBuilder: (BuildContext context, int index) {
+                      return ListTile(
+                        leading: Text(
+                          '${index + 1}',
+                          style: Theme.of(context).textTheme.titleMedium,
+                        ),
+                        title: Text(widget.course.lessons[index].title),
+                        subtitle: Text(
+                          widget.course.lessons[index].description,
+                        ),
+                        trailing: Text(
+                          widget.course.lessons[index].progress.toString(),
+                        ),
+                        onTap: () {},
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
-            (widget.course.isStarted == false) ? 
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  widget.course.markAsStarted();                  
-                });
-              },
-              child: const Text('Начать учиться'),
-            ) : Container()
+            (widget.course.isStarted == false)
+                ? ElevatedButton(
+                    onPressed: () {
+                      setState(() {
+                        widget.course.markAsStarted();
+                      });
+                    },
+                    child: const Text('Начать учиться'),
+                  )
+                : Container(),
           ],
         ),
       ),
