@@ -5,7 +5,7 @@ import 'package:flutter_ossetian_learning_app/repositories/abstract_course_repos
 class CourseRepositoryInMemory extends AbstractCourseRepository {
   CourseRepositoryInMemory();
 // Генерация демо-данных с уроками и блоками
-  List<Course> _courses =
+  final List<Course> _courses =
     [
       // КУРС 1: РАЗГОВОРНЫЙ ОСЕТИНСКИЙ ЯЗЫК
       Course(

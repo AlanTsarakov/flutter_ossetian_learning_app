@@ -14,17 +14,14 @@ class _LessonScreenState extends State<LessonScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.lesson.title),
-      ),
+      appBar: AppBar(title: Text(widget.lesson.title)),
       body: Column(
         children: [
           LinearProgressIndicator(
-            value: (_currentBlockIndex + 1) / widget.lesson.blocks.length,
+            value: _currentBlockIndex / (widget.lesson.blocks.length - 1),
           ),
           Expanded(
-            child: Container()
-            // _buildBlockWidget(currentBlock),
+            child: _buildBlockWidget(widget.lesson.blocks[_currentBlockIndex]),
           ),
           _buildNavigationButtons(),
         ],
@@ -33,41 +30,61 @@ class _LessonScreenState extends State<LessonScreen> {
   }
 
   Widget _buildNavigationButtons() {
-  return Padding(
-    padding: const EdgeInsets.all(16),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        // Кнопка НАЗАД (показываем только если не первый блок)
-        if (_currentBlockIndex > 0)
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                _currentBlockIndex--;
-              });
-            },
-            child: const Text('Назад'),
-          ),
-        
-        // Кнопка ДАЛЕЕ/ЗАВЕРШИТЬ (всегда показываем)
-        ElevatedButton(
-          onPressed: () {
-            if (_currentBlockIndex < widget.lesson.blocks.length - 1) {
-              setState(() {
-                _currentBlockIndex++;
-              });
-            } else {
-              Navigator.pop(context);
-            }
-          },
-          child: Text(
-            _currentBlockIndex < widget.lesson.blocks.length - 1
-                ? 'Далее'
-                : 'Завершить',
-          ),
+    final bool isLast = _currentBlockIndex == widget.lesson.blocks.length - 1;
+    final bool hasPrevious = _currentBlockIndex > 0;
+
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            // Используем прозрачную заглушку, чтобы "Далее" всегда была справа
+            if (hasPrevious)
+              TextButton(
+                onPressed: () => setState(() => _currentBlockIndex--),
+                child: const Text('Назад'),
+              )
+            else
+              const SizedBox(
+                width: 80,
+              ), // Примерная ширина кнопки, чтобы не ломать Row
+
+            FilledButton(
+              onPressed: () {
+                if (!isLast) {
+                  setState(() => _currentBlockIndex++);
+                } else {
+                  Navigator.pop(context);
+                }
+              },
+              child: Text(isLast ? 'Завершить' : 'Далее'),
+            ),
+          ],
         ),
+      ),
+    );
+  }
+  
+  Widget _buildBlockWidget(Block currentBlock) {
+    if (currentBlock.type == BlockType.theory)
+    {
+      return _buildBlockTheoryWidget(currentBlock);
+    }
+    return Column(
+      children: [
+        Text(currentBlock.title),
+        Text(currentBlock.type.name)
       ],
-    ),
-  );
-}
+    );
+  }
+  
+  Widget _buildBlockTheoryWidget(Block currentBlock) {
+    TheoryBlock block = currentBlock as TheoryBlock;
+    return ListView(
+      children: [
+        ListTile(title: Text(block.title), subtitle: Text(block.content),)
+      ],
+    );
+  }
 }
