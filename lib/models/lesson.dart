@@ -20,11 +20,8 @@ class Lesson {
     // this.durationInMinutes = 0,
   });
 
-  void checkCompletion() {
-    if (isAllBlocksCompleted && !isCompleted) {
-      isCompleted = true;
-    }
-  }
+  void checkCompletion() => isCompleted = totalBlocks == completedBlocks;
+
 }
 
 abstract class Block {

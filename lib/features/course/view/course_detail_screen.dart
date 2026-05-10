@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ossetian_learning_app/features/lesson/view/lesson_screen.dart';
 import 'package:flutter_ossetian_learning_app/models/course.dart';
 
 class CourseDetailScreen extends StatefulWidget {
@@ -95,20 +96,56 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                     shrinkWrap: true,
                     itemCount: widget.course.totalLessons,
                     itemBuilder: (BuildContext context, int index) {
-                      return ListTile(
-                        leading: Text(
-                          '${index + 1}',
-                          style: Theme.of(context).textTheme.titleMedium,
-                        ),
-                        title: Text(widget.course.lessons[index].title),
-                        subtitle: Text(
-                          widget.course.lessons[index].description,
-                        ),
-                        trailing: Text(
-                          widget.course.lessons[index].progress.toString(),
-                        ),
-                        onTap: () {},
-                      );
+                      if (index < widget.course.completedLessons) {
+                        return ListTile(
+                          leading: Text(
+                            '${index + 1}',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          title: Text(widget.course.lessons[index].title),
+                          subtitle: Text(
+                            widget.course.lessons[index].description,
+                          ),
+                          trailing: Icon(Icons.check_circle),
+                          onTap: () {},
+                        );
+                      } else if (index > widget.course.completedLessons) {
+                        return ListTile(
+                          enabled: false,
+                          leading: Text(
+                            '${index + 1}',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          title: Text(widget.course.lessons[index].title),
+                          subtitle: Text(
+                            widget.course.lessons[index].description,
+                          ),
+                          trailing: Icon(Icons.lock),
+                          onTap: () {},
+                        );
+                      } else {
+                        return ListTile(
+                          leading: Text(
+                            '${index + 1}',
+                            style: Theme.of(context).textTheme.titleMedium,
+                          ),
+                          title: Text(widget.course.lessons[index].title),
+                          subtitle: Text(
+                            widget.course.lessons[index].description,
+                          ),
+                          trailing: Icon(Icons.play_circle_filled),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => LessonScreen(
+                                  lesson: widget.course.lessons[index],
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                      }
                     },
                   ),
                 ],
