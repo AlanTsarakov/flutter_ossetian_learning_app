@@ -4,7 +4,6 @@
 
 ![Flutter](https://img.shields.io/badge/Flutter-3.11+-blue?style=flat-square&logo=flutter)
 ![Dart](https://img.shields.io/badge/Dart-3.11+-0175C2?style=flat-square&logo=dart)
-![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
 ## ✨ Основные возможности
 
