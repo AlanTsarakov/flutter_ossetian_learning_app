@@ -3,7 +3,11 @@ class Lesson {
   final String title;
   final String description;
   final List<Block> blocks;
-  bool isCompleted;
+
+
+
+
+  bool get isCompleted => blocks.length == blocks.where((block) => block.isCompleted).length;
   // int durationInMinutes;
 
   int get totalBlocks => blocks.length;
@@ -16,11 +20,8 @@ class Lesson {
     required this.title,
     this.description = '',
     this.blocks = const [],
-    this.isCompleted = false,
     // this.durationInMinutes = 0,
   });
-
-  void checkCompletion() => isCompleted = totalBlocks == completedBlocks;
 
 }
 
@@ -29,6 +30,11 @@ abstract class Block {
   final String title;
   final BlockType type;
   bool isCompleted;
+
+  void complete()
+  {
+    isCompleted = true;
+  }
 
   Block({
     this.id,

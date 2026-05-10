@@ -6,7 +6,6 @@ import 'package:flutter_ossetian_learning_app/models/course.dart';
 class CourseDetailScreen extends StatefulWidget {
   const CourseDetailScreen({super.key, required this.course});
   final Course course;
-
   @override
   State<StatefulWidget> createState() => CourseDetailScreenState();
 }
@@ -134,15 +133,20 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                             widget.course.lessons[index].description,
                           ),
                           trailing: Icon(Icons.play_circle_filled),
-                          onTap: () {
-                            Navigator.push(
+                          onTap: () async {
+                            var result = await Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => LessonScreen(
-                                  lesson: widget.course.lessons[index],
+                                  lesson: widget.course.lessons[index], 
                                 ),
                               ),
                             );
+                            if (result == true)
+                            {
+                              setState(() {
+                              });
+                            }
                           },
                         );
                       }

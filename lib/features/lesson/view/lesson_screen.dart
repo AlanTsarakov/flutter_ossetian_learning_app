@@ -55,7 +55,7 @@ class _LessonScreenState extends State<LessonScreen> {
                 if (!isLast) {
                   setState(() => _currentBlockIndex++);
                 } else {
-                  Navigator.pop(context);
+                  Navigator.pop(context, true);
                 }
               },
               child: Text(isLast ? 'Завершить' : 'Далее'),
@@ -67,6 +67,9 @@ class _LessonScreenState extends State<LessonScreen> {
   }
   
   Widget _buildBlockWidget(Block currentBlock) {
+    setState(() {
+          currentBlock.complete();
+    });
     if (currentBlock.type == BlockType.theory)
     {
       return _buildBlockTheoryWidget(currentBlock);
