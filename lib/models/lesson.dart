@@ -4,10 +4,8 @@ class Lesson {
   final String description;
   final List<Block> blocks;
 
-
-
-
-  bool get isCompleted => blocks.length == blocks.where((block) => block.isCompleted).length;
+  bool get isCompleted =>
+      blocks.length == blocks.where((block) => block.isCompleted).length;
   // int durationInMinutes;
 
   int get totalBlocks => blocks.length;
@@ -22,7 +20,6 @@ class Lesson {
     this.blocks = const [],
     // this.durationInMinutes = 0,
   });
-
 }
 
 abstract class Block {
@@ -31,8 +28,7 @@ abstract class Block {
   final BlockType type;
   bool isCompleted;
 
-  void complete()
-  {
+  void complete() {
     isCompleted = true;
   }
 
@@ -77,7 +73,7 @@ class QuizBlock extends Block {
     required super.title,
     required this.choices,
     required this.correctChoiceIndices,
-    this.allowMultiple = false,
+    this.allowMultiple = true,
   }) : super(type: BlockType.quiz);
 }
 

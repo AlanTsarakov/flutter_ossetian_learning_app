@@ -10,7 +10,10 @@ class QuizBlockWidget extends StatefulWidget {
 }
 
 class _QuizBlockWidgetState extends State<QuizBlockWidget> {
-  var _selected = -1;
+  var _selected = List.generate(10, (x) => x = -1);
+
+  void isCorrectAnswer() {}
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -27,22 +30,41 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
                 const SizedBox(height: 24),
-                RadioGroup<int>(
-                  groupValue: _selected,
-                  onChanged: (v) => setState(() => _selected = v ?? -1),
-                  child: Column(
-                    children: widget.block.choices
-                        .asMap()
-                        .entries
-                        .map(
-                          (e) => RadioListTile<int>(
-                            value: e.key,
+                (!widget.block.allowMultiple)
+                    ? RadioGroup<int>(
+                        groupValue: _selected[0],
+                        onChanged: (v) =>
+                            setState(() => _selected[0] = v ?? -1),
+                        child: Column(
+                          children: widget.block.choices
+                              .asMap()
+                              .entries
+                              .map(
+                                (e) => RadioListTile<int>(
+                                  value: e.key,
+                                  title: Text(e.value),
+                                ),
+                              )
+                              .toList(),
+                        ),
+                      )
+                    : Column(
+                        children: widget.block.choices.asMap().entries.map((e) {
+                          return CheckboxListTile(
+                            value: _selected.contains(e.key),
                             title: Text(e.value),
-                          ),
-                        )
-                        .toList(),
-                  ),
-                ),
+                            onChanged: (bool? checked) {
+                              setState(() {
+                                if (checked == true) {
+                                  _selected.add(e.key);
+                                } else {
+                                  _selected.remove(e.key);
+                                }
+                              });
+                            },
+                          );
+                        }).toList(),
+                      ),
               ],
             ),
           ),

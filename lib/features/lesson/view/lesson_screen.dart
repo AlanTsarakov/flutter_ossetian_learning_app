@@ -12,8 +12,7 @@ class LessonScreen extends StatefulWidget {
 }
 
 class _LessonScreenState extends State<LessonScreen> {
-  int _currentBlockIndex = 0;
-  var _selected = -1;
+  int _currentBlockIndex = 1;
   final Map<int, List<String>> quizAsnwers = {};
 
   @override

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_ossetian_learning_app/features/profile/widgets/profile_card.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -28,6 +29,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               constraints: const BoxConstraints(maxWidth: 400),
               child: ListView(
                 children: [
+                  ProfileCard(name: "Георгий Лохов", id: "@id12439"),
+                  const SizedBox(height: 24),
                   _SingleSection(
                     title: "Общие настройки",
                     children: [
