@@ -12,18 +12,32 @@ class QuizBlockWidget extends StatefulWidget {
 }
 
 class _QuizBlockWidgetState extends State<QuizBlockWidget> {
-  var _selected;
+  Set<int> _selected = {};
 
   void checkCorrectAnswer(BuildContext context) {
-    if (listEquals(_selected, widget.block.correctChoiceIndices)) {
+    bool isCorrect = setEquals(
+      _selected,
+      widget.block.correctChoiceIndices.toSet(),
+    );
+
+    if (isCorrect) {
       showModalBottomSheet(
         context: context,
         builder: (context) {
           return Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              ListTile(leading: Icon(Icons.camera), title: Text('Camera')),
-              ListTile(leading: Icon(Icons.image), title: Text('Gallery')),
+              const ListTile(
+                leading: Icon(Icons.check_circle, color: Colors.green),
+                title: Text('Правильно!'),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  widget.onNext();
+                },
+                child: const Text('Далее'),
+              ),
             ],
           );
         },
@@ -32,22 +46,22 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
       showModalBottomSheet(
         context: context,
         builder: (context) {
-          return Column(
-            mainAxisSize: MainAxisSize.min,
+          return ListView(
+            padding: .all(16),
             children: [
-              ListTile(leading: Icon(Icons.camera), title: Text('Camera')),
-              ListTile(leading: Icon(Icons.image), title: Text('Gallery')),
+              const ListTile(
+                leading: Icon(Icons.error, color: Colors.red),
+                title: Text('Неправильно! Попробуйте еще раз'),
+              ),
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text('Закрыть'),
+              ),
             ],
           );
         },
       );
     }
-  }
-
-  @override
-  void initState() {
-    _selected = List.filled(widget.block.correctChoiceIndices.length, -1);
-    super.initState();
   }
 
   @override
@@ -64,40 +78,23 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
                 style: Theme.of(context).textTheme.titleLarge,
               ),
               const SizedBox(height: 24),
-              (!widget.block.allowMultiple)
-                  ? RadioGroup<int>(
-                      groupValue: _selected[0],
-                      onChanged: (v) => setState(() => _selected[0] = v ?? -1),
-                      child: Column(
-                        children: widget.block.choices
-                            .asMap()
-                            .entries
-                            .map(
-                              (e) => RadioListTile<int>(
-                                value: e.key,
-                                title: Text(e.value),
-                              ),
-                            )
-                            .toList(),
-                      ),
-                    )
-                  : Column(
-                      children: widget.block.choices.asMap().entries.map((e) {
-                        return CheckboxListTile(
-                          value: _selected.contains(e.key),
-                          title: Text(e.value),
-                          onChanged: (bool? checked) {
-                            setState(() {
-                              if (checked == true) {
-                                _selected.add(e.key);
-                              } else {
-                                _selected.remove(e.key);
-                              }
-                            });
-                          },
-                        );
-                      }).toList(),
-                    ),
+              Column(
+                children: widget.block.choices.asMap().entries.map((e) {
+                  return CheckboxListTile(
+                    value: _selected.contains(e.key),
+                    title: Text(e.value),
+                    onChanged: (bool? checked) {
+                      setState(() {
+                        if (checked == true) {
+                          _selected.add(e.key);
+                        } else {
+                          _selected.remove(e.key);
+                        }
+                      });
+                    },
+                  );
+                }).toList(),
+              ),
             ],
           ),
         ),
