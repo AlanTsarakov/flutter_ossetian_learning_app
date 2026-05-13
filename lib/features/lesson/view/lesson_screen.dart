@@ -12,7 +12,7 @@ class LessonScreen extends StatefulWidget {
 }
 
 class _LessonScreenState extends State<LessonScreen> {
-  int _currentBlockIndex = 1;
+  int _currentBlockIndex = 0;
   final Map<int, List<String>> quizAsnwers = {};
 
   @override
@@ -43,9 +43,15 @@ class _LessonScreenState extends State<LessonScreen> {
   Widget _buildBlockWidget(Block currentBlock) {
     switch (currentBlock.type) {
       case (BlockType.theory):
-        return TheoryBlockWidget(block: currentBlock as TheoryBlock);
+        return TheoryBlockWidget(
+          block: currentBlock as TheoryBlock,
+          onNext: _goToNextBlock,
+        );
       case BlockType.quiz:
-        return QuizBlockWidget(block: currentBlock as QuizBlock);
+        return QuizBlockWidget(
+          block: currentBlock as QuizBlock,
+          onNext: _goToNextBlock,
+        );
       default:
         return Container();
     }
