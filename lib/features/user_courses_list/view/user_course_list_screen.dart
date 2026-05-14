@@ -16,15 +16,6 @@ class MainScreenState extends State<MainScreen> {
     final courses = GetIt.I<AbstractCourseRepository>().getStartedCourses();
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          width: double.infinity,
-          child: Text(
-            'Мои курсы',
-            style: Theme.of(context).textTheme.headlineMedium,
-            textAlign: TextAlign.center,
-          ),
-        ),
         Expanded(
           child: ListView.builder(
             padding: .only(bottom: 16, left: 16, right: 16),

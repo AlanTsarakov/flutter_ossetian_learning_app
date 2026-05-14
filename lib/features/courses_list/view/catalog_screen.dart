@@ -16,22 +16,12 @@ class CatalogScreenState extends State<CatalogScreen> {
   String _selectedCategory = "Популярное";
   @override
   Widget build(BuildContext context) {
-
     final textTheme = Theme.of(context).textTheme;
     final courses = GetIt.I<AbstractCourseRepository>().getCoursesByCategory(
       _selectedCategory,
     );
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          width: double.infinity,
-          child: Text(
-            'Каталог',
-            style: textTheme.headlineMedium,
-            textAlign: TextAlign.center,
-          ),
-        ),
         Row(
           spacing: 12,
           children: [

@@ -47,12 +47,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentScreenIndex = 0;
-  List<Widget> screens = [MainScreen(), CatalogScreen(), ProfileScreen()];
+  List<(String, Widget)> screens = [
+    ("Главное", MainScreen()),
+    ("Каталог", CatalogScreen()),
+    ("Профиль", ProfileScreen()),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[_currentScreenIndex],
+      appBar: AppBar(title: Text(screens[_currentScreenIndex].$1)),
+      body: screens[_currentScreenIndex].$2,
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentScreenIndex,
         onDestinationSelected: (value) => setState(() {

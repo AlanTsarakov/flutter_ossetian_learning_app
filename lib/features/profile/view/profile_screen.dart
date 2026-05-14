@@ -14,15 +14,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          width: double.infinity,
-          child: Text(
-            'Профиль',
-            style: Theme.of(context).textTheme.headlineMedium,
-            textAlign: TextAlign.center,
-          ),
-        ),
         Expanded(
           child: Center(
             child: Container(
