@@ -13,9 +13,7 @@ void main() {
   GetIt.instance.registerSingleton<AbstractCourseRepository>(
     CourseRepositoryInMemory(),
   );
-  GetIt.instance.registerSingleton(
-    FlashcardRepository(),
-  );
+  GetIt.instance.registerSingleton(FlashcardRepository());
   runApp(const MyApp());
 }
 
@@ -26,11 +24,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      routes: {
-        "/" :  (context) => MyHomePage(title: "Adam",),
-      },
+      routes: {"/": (context) => MyHomePage(title: "Adam")},
       title: 'Flutter Demo',
-      themeMode: .dark,
+      themeMode: .system,
       darkTheme: MaterialTheme(
         createTextTheme(context, "Roboto", "Roboto"),
       ).dark(),

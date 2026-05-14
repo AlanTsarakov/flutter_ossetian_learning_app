@@ -105,7 +105,10 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                           subtitle: Text(
                             widget.course.lessons[index].description,
                           ),
-                          trailing: Icon(Icons.check_circle),
+                          trailing: Icon(
+                            Icons.check_circle,
+                            color: Colors.green,
+                          ),
                           onTap: () {},
                         );
                       } else if (index > widget.course.completedLessons) {
@@ -138,14 +141,13 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                               context,
                               MaterialPageRoute(
                                 builder: (context) => LessonScreen(
-                                  lesson: widget.course.lessons[index], 
+                                  lesson: widget.course.lessons[index],
+                                  onLessonComplete: () => setState(() {}),
                                 ),
                               ),
                             );
-                            if (result == true)
-                            {
-                              setState(() {
-                              });
+                            if (result == true) {
+                              setState(() {});
                             }
                           },
                         );

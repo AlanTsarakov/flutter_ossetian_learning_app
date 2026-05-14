@@ -26,60 +26,63 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Expanded(
           child: Center(
             child: Container(
-              constraints: const BoxConstraints(maxWidth: 400),
-              child: ListView(
-                children: [
-                  ProfileCard(name: "Георгий Лохов", id: "@id12439"),
-                  const SizedBox(height: 24),
-                  _SingleSection(
-                    title: "Общие настройки",
-                    children: [
-                      _CustomListTile(
-                        title: "Темная тема",
-                        icon: Icons.dark_mode_outlined,
-                        onTap: () => _showFormSheet(context),
-                        // trailing: Switch(
-                        //   value: _isDark,
-                        //   onChanged: (value) {
-                        //     setState(() {
-                        //       _isDark = value;
-                        //     });
-                        //   },
-                        // ),
-                      ),
+              constraints: const BoxConstraints(maxWidth: 700),
+              child: Padding(
+                padding: .all(16),
+                child: ListView(
+                  children: [
+                    ProfileCard(name: "Alan Tsarakov", id: "@id12439"),
+                    const SizedBox(height: 24),
+                    _SingleSection(
+                      title: "Общие настройки",
+                      children: [
+                        _CustomListTile(
+                          title: "Темная тема",
+                          icon: Icons.dark_mode_outlined,
+                          onTap: () => _showFormSheet(context),
+                          // trailing: Switch(
+                          //   value: _isDark,
+                          //   onChanged: (value) {
+                          //     setState(() {
+                          //       _isDark = value;
+                          //     });
+                          //   },
+                          // ),
+                        ),
 
-                      const _CustomListTile(
-                        title: "Напоминание",
-                        icon: Icons.notifications_none_rounded,
-                      ),
-                      const _CustomListTile(
-                        title: "Язык",
-                        icon: CupertinoIcons.globe,
-                      ),
-                      const _CustomListTile(
-                        title: "Обнулить прогресс",
-                        icon: CupertinoIcons.clear,
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  const _SingleSection(
-                    children: [
-                      _CustomListTile(
-                        title: "Помощь & Обратная связь",
-                        icon: Icons.help_outline_rounded,
-                      ),
-                      _CustomListTile(
-                        title: "О нас",
-                        icon: Icons.info_outline_rounded,
-                      ),
-                      // _CustomListTile(
-                      //   title: "Sign out",
-                      //   icon: Icons.exit_to_app_rounded,
-                      // ),
-                    ],
-                  ),
-                ],
+                        const _CustomListTile(
+                          title: "Напоминание",
+                          icon: Icons.notifications_none_rounded,
+                        ),
+                        const _CustomListTile(
+                          title: "Язык",
+                          icon: CupertinoIcons.globe,
+                        ),
+                        const _CustomListTile(
+                          title: "Обнулить прогресс",
+                          icon: CupertinoIcons.clear,
+                        ),
+                      ],
+                    ),
+                    const Divider(),
+                    const _SingleSection(
+                      children: [
+                        _CustomListTile(
+                          title: "Помощь & Обратная связь",
+                          icon: Icons.help_outline_rounded,
+                        ),
+                        _CustomListTile(
+                          title: "О нас",
+                          icon: Icons.info_outline_rounded,
+                        ),
+                        // _CustomListTile(
+                        //   title: "Sign out",
+                        //   icon: Icons.exit_to_app_rounded,
+                        // ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -92,33 +95,65 @@ class _ProfileScreenState extends State<ProfileScreen> {
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       builder: (ctx) => Padding(
-        padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
+        padding: const EdgeInsets.all(8),
+        // padding: EdgeInsets.only(bottom: MediaQuery.of(ctx).viewInsets.bottom),
         child: Padding(
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(16),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('Form Sheet', style: Theme.of(context).textTheme.titleLarge),
-              const SizedBox(height: 16),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                  border: OutlineInputBorder(),
+              SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                  },
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  child: const Text(
+                    'По умолчанию',
+                    style: TextStyle(fontSize: 16),
+                  ),
                 ),
               ),
-              const SizedBox(height: 12),
-              TextField(
-                decoration: const InputDecoration(
-                  labelText: 'Email',
-                  border: OutlineInputBorder(),
+
+              const Divider(height: 1),
+
+              SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                  },
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  child: const Text('Включена', style: TextStyle(fontSize: 16)),
                 ),
-                keyboardType: TextInputType.emailAddress,
               ),
-              const SizedBox(height: 24),
-              FilledButton(
-                onPressed: () => Navigator.pop(ctx),
-                child: const Text('Сохранить'),
+
+              const Divider(height: 1),
+
+              // Текстовая кнопка темной темы
+              SizedBox(
+                width: double.infinity,
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.pop(ctx);
+                  },
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                  ),
+                  child: const Text(
+                    'Выключена',
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
               ),
             ],
           ),

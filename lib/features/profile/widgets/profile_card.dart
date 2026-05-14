@@ -9,24 +9,10 @@ class ProfileCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),
       child: Row(
         children: [
           // Аватар (иконка или изображение)
-          Container(
-            width: 56,
-            height: 56,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.person_outline_rounded,
-              size: 32,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-          ),
           const SizedBox(width: 16),
 
           // Имя и ID
@@ -54,16 +40,19 @@ class ProfileCard extends StatelessWidget {
           ),
 
           // Редактировать (иконка)
-          IconButton(
-            onPressed: () {
-              // Редактирование профиля
-            },
-            icon: Icon(
-              Icons.edit_outlined,
-              size: 20,
-              color: Theme.of(context).colorScheme.onSurfaceVariant,
-            ),
-          ),
+          // Container(
+          //   width: 56,
+          //   height: 56,
+          //   decoration: BoxDecoration(
+          //     color: Theme.of(context).colorScheme.primaryContainer,
+          //     shape: BoxShape.circle,
+          //   ),
+          //   child: Icon(
+          //     Icons.person_outline_rounded,
+          //     size: 32,
+          //     color: Theme.of(context).colorScheme.primary,
+          //   ),
+          // ),
         ],
       ),
     );

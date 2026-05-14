@@ -6,10 +6,11 @@ class TheoryBlockWidget extends StatefulWidget {
     super.key,
     required this.block,
     required this.onNext,
+    required this.onPrevious,
   });
   final TheoryBlock block;
   final VoidCallback onNext;
-
+  final VoidCallback onPrevious;
   @override
   State<TheoryBlockWidget> createState() => _TheoryBlockWidgetState();
 }
@@ -51,7 +52,7 @@ class _TheoryBlockWidgetState extends State<TheoryBlockWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-              onPressed: () => widget.onNext(),
+              onPressed: () => widget.onPrevious(),
               child: const Text('Назад'),
             ),
             FilledButton(
