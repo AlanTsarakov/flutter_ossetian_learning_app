@@ -7,6 +7,7 @@ import 'package:flutter_ossetian_learning_app/repositories/course_repository_in_
 import 'package:flutter_ossetian_learning_app/repositories/flashcard_repository.dart';
 import 'package:flutter_ossetian_learning_app/theme/theme.dart';
 import 'package:flutter_ossetian_learning_app/theme/util.dart';
+import 'package:flutter_ossetian_learning_app/theme_notifier.dart';
 import 'package:get_it/get_it.dart';
 
 void main() {
@@ -19,20 +20,24 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      routes: {"/": (context) => MyHomePage(title: "Adam")},
-      title: 'Flutter Demo',
-      themeMode: .system,
-      darkTheme: MaterialTheme(
-        createTextTheme(context, "Roboto", "Roboto"),
-      ).dark(),
-      theme: MaterialTheme(
-        createTextTheme(context, "Roboto", "Roboto"),
-      ).light(),
+    return ValueListenableBuilder(
+      valueListenable: themeModeNotifier,
+      builder: (context, value, child) {
+        return MaterialApp(
+          routes: {"/": (context) => MyHomePage(title: "Adam")},
+          title: 'Flutter Demo',
+          themeMode: themeModeNotifier.value,
+          darkTheme: MaterialTheme(
+            createTextTheme(context, "Roboto", "Roboto"),
+          ).dark(),
+          theme: MaterialTheme(
+            createTextTheme(context, "Roboto", "Roboto"),
+          ).light(),
+        );
+      },
     );
   }
 }
@@ -56,7 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(screens[_currentScreenIndex].$1)),
+      appBar: AppBar(
+        title: Center(child: Text(screens[_currentScreenIndex].$1)),
+      ),
       body: screens[_currentScreenIndex].$2,
       bottomNavigationBar: NavigationBar(
         selectedIndex: _currentScreenIndex,

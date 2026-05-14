@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_ossetian_learning_app/features/profile/widgets/profile_card.dart';
+import 'package:flutter_ossetian_learning_app/theme_notifier.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -101,6 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
+                    themeModeNotifier.value = .system;
                     Navigator.pop(ctx);
                   },
                   style: TextButton.styleFrom(
@@ -119,6 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
+                    themeModeNotifier.value = .dark;
                     Navigator.pop(ctx);
                   },
                   style: TextButton.styleFrom(
@@ -135,6 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 width: double.infinity,
                 child: TextButton(
                   onPressed: () {
+                    themeModeNotifier.value = .light;
                     Navigator.pop(ctx);
                   },
                   style: TextButton.styleFrom(
