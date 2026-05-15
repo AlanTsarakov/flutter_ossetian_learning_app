@@ -1,5 +1,8 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/models/lesson.dart';
+import 'package:markdown_widget/markdown_widget.dart';
+import 'package:markdown_widget/widget/markdown.dart';
 
 class TheoryBlockWidget extends StatefulWidget {
   const TheoryBlockWidget({
@@ -34,7 +37,25 @@ class _TheoryBlockWidgetState extends State<TheoryBlockWidget> {
                 ),
               ),
               const SizedBox(height: 16),
-              Text(widget.block.content, style: const TextStyle(fontSize: 16)),
+              MarkdownBlock(
+                data: widget.block.content,
+                config: MarkdownConfig(
+                  configs: [
+                    ImgConfig(
+                      builder: (url, attributes) {
+                        return CachedNetworkImage(
+                          placeholder: (context, url) =>
+                              CircularProgressIndicator(),
+                          errorWidget: (context, url, error) =>
+                              Icon(Icons.error),
+                          imageUrl: url,
+                          fit: BoxFit.cover,
+                        );
+                      },
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
         ),
