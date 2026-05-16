@@ -18,7 +18,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Expanded(
           child: Center(
             child: Container(
-              constraints: const BoxConstraints(maxWidth: 700),
+              constraints: const BoxConstraints(maxWidth: 1200),
               child: Padding(
                 padding: .all(16),
                 child: ListView(

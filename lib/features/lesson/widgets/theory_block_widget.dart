@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/models/lesson.dart';
 import 'package:markdown_widget/markdown_widget.dart';
-import 'package:markdown_widget/widget/markdown.dart';
 
 class TheoryBlockWidget extends StatefulWidget {
   const TheoryBlockWidget({
@@ -41,15 +40,27 @@ class _TheoryBlockWidgetState extends State<TheoryBlockWidget> {
                 data: widget.block.content,
                 config: MarkdownConfig(
                   configs: [
+                    HrConfig(
+                      color: Theme.of(context).colorScheme.outlineVariant,
+                      height: 1,
+                    ),
                     ImgConfig(
                       builder: (url, attributes) {
-                        return CachedNetworkImage(
-                          placeholder: (context, url) =>
-                              CircularProgressIndicator(),
-                          errorWidget: (context, url, error) =>
-                              Icon(Icons.error),
-                          imageUrl: url,
-                          fit: BoxFit.cover,
+                        return Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: CachedNetworkImage(
+                              placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator(),
+                              ),
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.broken_image, size: 48),
+                              imageUrl: url,
+                              fit: BoxFit.cover,
+                              width: double.infinity,
+                            ),
+                          ),
                         );
                       },
                     ),

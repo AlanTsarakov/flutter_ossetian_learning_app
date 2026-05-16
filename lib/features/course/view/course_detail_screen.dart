@@ -17,7 +17,6 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
       appBar: AppBar(
         title: Text(
           widget.course.name,
-          style: Theme.of(context).textTheme.labelLarge,
         ),
         centerTitle: true,
       ),

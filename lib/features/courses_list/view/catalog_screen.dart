@@ -25,7 +25,7 @@ class CatalogScreenState extends State<CatalogScreen> {
         Row(
           spacing: 12,
           children: [
-            const SizedBox(width: 16),
+            const SizedBox(width: 4),
             ...categories.map((category) {
               final isSelected = category == _selectedCategory;
               return isSelected

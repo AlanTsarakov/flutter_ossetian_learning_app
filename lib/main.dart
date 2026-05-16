@@ -31,10 +31,10 @@ class MyApp extends StatelessWidget {
           title: 'Flutter Demo',
           themeMode: themeModeNotifier.value,
           darkTheme: MaterialTheme(
-            createTextTheme(context, "Roboto", "Roboto"),
+            createTextTheme(context, "Nunito", "Nunito"),
           ).dark(),
           theme: MaterialTheme(
-            createTextTheme(context, "Roboto", "Roboto"),
+            createTextTheme(context, "Nunito", "Nunito"),
           ).light(),
         );
       },
