@@ -16,12 +16,7 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.course.name,
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text(widget.course.name), centerTitle: true),
       body: Padding(
         padding: .all(16),
         child: Column(
@@ -45,14 +40,6 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                           height: MediaQuery.of(context).size.height * 0.3,
                         ),
                       ),
-                      // BackdropFilter(
-                      //   filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-                      //   child: Container(
-                      //     width: double.infinity,
-                      //     height: MediaQuery.of(context).size.height * 0.3,
-                      //     color: Colors.black.withOpacity(0.1),
-                      //   ),
-                      // ),
                     ],
                   ),
                   Padding(
@@ -137,15 +124,21 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                             widget.course.lessons[index].description,
                           ),
                           trailing: Icon(Icons.play_circle_filled),
-                          onTap: ()  {
+                          onTap: () {
                             widget.course.markAsStarted();
-                            GetIt.I<AbstractCourseRepository>().addCourse(widget.course);
+                            GetIt.I<AbstractCourseRepository>().addCourse(
+                              widget.course,
+                            );
                             Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => LessonScreen(
                                   lesson: widget.course.lessons[index],
-                                  onLessonComplete: () => setState(() {}),
+                                  onLessonComplete: () {
+                                    GetIt.I<AbstractCourseRepository>()
+                                        .addCourse(widget.course);
+                                    setState(() {});
+                                  },
                                 ),
                               ),
                             );
