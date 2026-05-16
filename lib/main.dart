@@ -1,20 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ossetian_learning_app/data_initializer.dart';
 import 'package:flutter_ossetian_learning_app/features/courses_list/course_list.dart';
 import 'package:flutter_ossetian_learning_app/features/user_courses_list/user_courses_list.dart';
 import 'package:flutter_ossetian_learning_app/features/profile/profile.dart';
+import 'package:flutter_ossetian_learning_app/models/block.dart';
+import 'package:flutter_ossetian_learning_app/models/course.dart';
+import 'package:flutter_ossetian_learning_app/models/lesson.dart';
 import 'package:flutter_ossetian_learning_app/repositories/abstract_course_repository.dart';
+import 'package:flutter_ossetian_learning_app/repositories/course_repository_hive.dart';
 import 'package:flutter_ossetian_learning_app/repositories/course_repository_in_memory.dart';
 import 'package:flutter_ossetian_learning_app/repositories/flashcard_repository.dart';
 import 'package:flutter_ossetian_learning_app/theme/theme.dart';
 import 'package:flutter_ossetian_learning_app/theme/util.dart';
 import 'package:flutter_ossetian_learning_app/theme_notifier.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+void main() async {
+  // GetIt.instance.registerSingleton<AbstractCourseRepository>(
+  //   CourseRepositoryInMemory(),
+  // );
+
   GetIt.instance.registerSingleton<AbstractCourseRepository>(
-    CourseRepositoryInMemory(),
+    CourseRepositoryHive(),
   );
+  await Hive.initFlutter();
+
+
   GetIt.instance.registerSingleton(FlashcardRepository());
+  Hive.registerAdapter(BlockTypeAdapter());
+  Hive.registerAdapter(ContentTypeAdapter());
+  Hive.registerAdapter(BlockAdapter());
+  Hive.registerAdapter(LessonAdapter());
+  Hive.registerAdapter(CourseAdapter());
+
+  await Hive.openBox<Course>('courses');
+
+  await DataInitializer.populateIfEmpty();
+
+
   runApp(const MyApp());
 }
 

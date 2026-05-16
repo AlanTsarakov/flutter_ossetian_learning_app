@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ossetian_learning_app/models/lesson.dart';
+import 'package:flutter_ossetian_learning_app/models/block.dart';
 import 'package:markdown_widget/markdown_widget.dart';
 
 class TheoryBlockWidget extends StatefulWidget {
@@ -10,7 +10,7 @@ class TheoryBlockWidget extends StatefulWidget {
     required this.onNext,
     required this.onPrevious,
   });
-  final TheoryBlock block;
+  final Block block;
   final VoidCallback onNext;
   final VoidCallback onPrevious;
   @override
@@ -37,7 +37,7 @@ class _TheoryBlockWidgetState extends State<TheoryBlockWidget> {
               ),
               const SizedBox(height: 16),
               MarkdownBlock(
-                data: widget.block.content,
+                data: widget.block.content!,
                 config: MarkdownConfig(
                   configs: [
                     HrConfig(
