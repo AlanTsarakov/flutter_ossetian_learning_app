@@ -56,10 +56,14 @@ class CourseWidget extends StatelessWidget {
                         Text(
                           course.name,
                           style: Theme.of(context).textTheme.titleMedium,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                         ),
                         Text(
                           course.description,
                           style: Theme.of(context).textTheme.bodySmall,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
                         ),
                         Row(
                           children: [
@@ -94,8 +98,12 @@ class CourseWidget extends StatelessWidget {
                   child: LinearProgressIndicator(
                     value: course.progress,
                     minHeight: 1,
-                    backgroundColor: Theme.of(context).colorScheme.surfaceContainerHighest,
-                    valueColor: AlwaysStoppedAnimation<Color>(Theme.of(context).colorScheme.primary),
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).colorScheme.primary,
+                    ),
                   ),
                 ),
               ),
