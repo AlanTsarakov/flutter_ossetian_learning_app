@@ -12,6 +12,7 @@ class CourseWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Random rnd = Random();
     return Card(
+      clipBehavior: Clip.antiAlias,
       margin: const EdgeInsets.only(bottom: 12),
       child: InkWell(
         borderRadius: BorderRadius.circular(12),
@@ -23,59 +24,90 @@ class CourseWidget extends StatelessWidget {
             ),
           );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Container(
-                width: 80,
-                height: 80,
-                clipBehavior: Clip.antiAlias,
-                decoration: BoxDecoration(
-                  color: Colors.primaries[rnd.nextInt(Colors.primaries.length)]
-                      .withValues(alpha: 0.3),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: CachedNetworkImage(
-                  placeholder: (context, url) =>
-                      CircularProgressIndicator(padding: .all(5)),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                  imageUrl: course.urlPhoto,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              const SizedBox(width: 16),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      course.name,
-                      style: Theme.of(context).textTheme.titleMedium,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(12),
+              child: Row(
+                children: [
+                  Container(
+                    width: 80,
+                    height: 80,
+                    clipBehavior: Clip.antiAlias,
+                    decoration: BoxDecoration(
+                      color: Colors
+                          .primaries[rnd.nextInt(Colors.primaries.length)]
+                          .withValues(alpha: 0.3),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    Text(
-                      course.description,
-                      style: Theme.of(context).textTheme.bodySmall,
+                    child: CachedNetworkImage(
+                      placeholder: (context, url) =>
+                          CircularProgressIndicator(padding: .all(5)),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      imageUrl: course.urlPhoto,
+                      fit: BoxFit.cover,
                     ),
-                    Row(
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Icon(Icons.star, size: 14, color: Colors.amber[700]),
                         Text(
-                          ' ${course.rating}',
-                          style: Theme.of(context).textTheme.bodySmall,
+                          course.name,
+                          style: Theme.of(context).textTheme.titleMedium,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
                         ),
                         Text(
-                          ' • ${course.author}',
+                          course.description,
                           style: Theme.of(context).textTheme.bodySmall,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 2,
+                        ),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.star,
+                              size: 14,
+                              color: Colors.amber[700],
+                            ),
+                            Text(
+                              ' ${course.rating}',
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                            Text(
+                              ' • ${course.author}',
+                              style: Theme.of(context).textTheme.bodySmall,
+                            ),
+                          ],
                         ),
                       ],
                     ),
-                  ],
+                  ),
+                  const Icon(Icons.chevron_right),
+                ],
+              ),
+            ),
+            if (course.isStarted)
+              Padding(
+                // Добавляем отступы слева, справа и снизу, чтобы полоса встала идеально ровно
+                padding: const EdgeInsets.only(left: 0, right: 0, bottom: 0),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(30),
+                  child: LinearProgressIndicator(
+                    value: course.progress,
+                    minHeight: 1,
+                    backgroundColor: Theme.of(
+                      context,
+                    ).colorScheme.surfaceContainerHighest,
+                    valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
                 ),
               ),
-              const Icon(Icons.chevron_right),
-            ],
-          ),
+          ],
         ),
       ),
     );

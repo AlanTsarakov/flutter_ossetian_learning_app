@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/features/lesson/view/lesson_screen.dart';
 import 'package:flutter_ossetian_learning_app/models/course.dart';
+import 'package:flutter_ossetian_learning_app/repositories/abstract_course_repository.dart';
+import 'package:get_it/get_it.dart';
 
 class CourseDetailScreen extends StatefulWidget {
   const CourseDetailScreen({super.key, required this.course});
@@ -14,12 +16,7 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          widget.course.name,
-        ),
-        centerTitle: true,
-      ),
+      appBar: AppBar(title: Text(widget.course.name), centerTitle: true),
       body: Padding(
         padding: .all(16),
         child: Column(
@@ -43,14 +40,6 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                           height: MediaQuery.of(context).size.height * 0.3,
                         ),
                       ),
-                      // BackdropFilter(
-                      //   filter: ImageFilter.blur(sigmaX: 2.0, sigmaY: 2.0),
-                      //   child: Container(
-                      //     width: double.infinity,
-                      //     height: MediaQuery.of(context).size.height * 0.3,
-                      //     color: Colors.black.withOpacity(0.1),
-                      //   ),
-                      // ),
                     ],
                   ),
                   Padding(
@@ -135,19 +124,24 @@ class CourseDetailScreenState extends State<CourseDetailScreen> {
                             widget.course.lessons[index].description,
                           ),
                           trailing: Icon(Icons.play_circle_filled),
-                          onTap: () async {
-                            var result = await Navigator.push(
+                          onTap: () {
+                            widget.course.markAsStarted();
+                            GetIt.I<AbstractCourseRepository>().addCourse(
+                              widget.course,
+                            );
+                            Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => LessonScreen(
                                   lesson: widget.course.lessons[index],
-                                  onLessonComplete: () => setState(() {}),
+                                  onLessonComplete: () {
+                                    GetIt.I<AbstractCourseRepository>()
+                                        .addCourse(widget.course);
+                                    setState(() {});
+                                  },
                                 ),
                               ),
                             );
-                            if (result == true) {
-                              setState(() {});
-                            }
                           },
                         );
                       }

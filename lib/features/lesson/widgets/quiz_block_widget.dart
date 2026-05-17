@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ossetian_learning_app/models/lesson.dart';
+import 'package:flutter_ossetian_learning_app/models/block.dart';
+
 
 class QuizBlockWidget extends StatefulWidget {
   const QuizBlockWidget({
@@ -9,7 +10,7 @@ class QuizBlockWidget extends StatefulWidget {
     required this.onPrevious,
     required this.onNext,
   });
-  final QuizBlock block;
+  final Block block;
 
   final VoidCallback onNext;
   final VoidCallback onPrevious;
@@ -23,7 +24,7 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
   void checkCorrectAnswer(BuildContext context) {
     bool isCorrect = setEquals(
       _selected,
-      widget.block.correctChoiceIndices.toSet(),
+      widget.block.correctChoiceIndices!.toSet(),
     );
 
     if (isCorrect) {
@@ -103,7 +104,7 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
                 ),
                 const SizedBox(height: 24),
                 Column(
-                  children: widget.block.choices.asMap().entries.map((e) {
+                  children: widget.block.choices!.asMap().entries.map((e) {
                     return CheckboxListTile(
                       value: _selected.contains(e.key),
                       title: Text(e.value),

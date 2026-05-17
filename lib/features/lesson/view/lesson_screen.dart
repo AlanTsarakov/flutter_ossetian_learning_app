@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/features/lesson/widgets/quiz_block_widget.dart';
 import 'package:flutter_ossetian_learning_app/features/lesson/widgets/theory_block_widget.dart';
+import 'package:flutter_ossetian_learning_app/models/block.dart';
 import 'package:flutter_ossetian_learning_app/models/lesson.dart';
 
 class LessonScreen extends StatefulWidget {
@@ -49,13 +50,13 @@ class _LessonScreenState extends State<LessonScreen> {
     switch (currentBlock.type) {
       case (BlockType.theory):
         return TheoryBlockWidget(
-          block: currentBlock as TheoryBlock,
+          block: currentBlock,
           onNext: _goToNextBlock,
           onPrevious: _goToPreviousBlock,
         );
       case BlockType.quiz:
         return QuizBlockWidget(
-          block: currentBlock as QuizBlock,
+          block: currentBlock,
           onNext: _goToNextBlock,
           onPrevious: _goToPreviousBlock,
         );

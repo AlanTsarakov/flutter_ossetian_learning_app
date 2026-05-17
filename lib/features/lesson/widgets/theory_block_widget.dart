@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_ossetian_learning_app/models/lesson.dart';
-import 'package:markdown_widget/markdown_widget.dart';
+import 'package:flutter_ossetian_learning_app/models/block.dart';
+import 'package:gpt_markdown/gpt_markdown.dart';
 
 class TheoryBlockWidget extends StatefulWidget {
   const TheoryBlockWidget({
@@ -10,7 +10,7 @@ class TheoryBlockWidget extends StatefulWidget {
     required this.onNext,
     required this.onPrevious,
   });
-  final TheoryBlock block;
+  final Block block;
   final VoidCallback onNext;
   final VoidCallback onPrevious;
   @override
@@ -36,35 +36,17 @@ class _TheoryBlockWidgetState extends State<TheoryBlockWidget> {
                 ),
               ),
               const SizedBox(height: 16),
-              MarkdownBlock(
-                data: widget.block.content,
-                config: MarkdownConfig(
-                  configs: [
-                    HrConfig(
-                      color: Theme.of(context).colorScheme.outlineVariant,
-                      height: 1,
-                    ),
-                    ImgConfig(
-                      builder: (url, attributes) {
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(16),
-                            child: CachedNetworkImage(
-                              placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator(),
-                              ),
-                              errorWidget: (context, url, error) =>
-                                  const Icon(Icons.broken_image, size: 48),
-                              imageUrl: url,
-                              fit: BoxFit.cover,
-                              width: double.infinity,
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
+              GptMarkdown(
+                widget.block.content!,
+                imageBuilder: (context, imageUrl, width, height) => Container(
+                  decoration: BoxDecoration(borderRadius: .circular(16)),
+                  clipBehavior: .hardEdge,
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.broken_image),
+                  ),
                 ),
               ),
             ],

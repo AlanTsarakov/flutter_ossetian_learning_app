@@ -1,3 +1,4 @@
+import 'package:flutter_ossetian_learning_app/models/block.dart';
 import 'package:flutter_ossetian_learning_app/models/course.dart';
 import 'package:flutter_ossetian_learning_app/models/lesson.dart';
 import 'package:flutter_ossetian_learning_app/repositories/abstract_course_repository.dart';
@@ -387,6 +388,7 @@ class CourseRepositoryInMemory extends AbstractCourseRepository {
 final List<Course> _courses = [
     // КУРС 1: ОСЕТИНСКАЯ ЛЕКСИКА: ЕДА И КУХНЯ
     Course(
+      id: 1,
       name: 'Осетинская лексика: еда и кухня',
       description: 'Изучаем названия блюд, продуктов и фразы для застолья.',
       rating: 4.9,
@@ -398,7 +400,7 @@ final List<Course> _courses = [
           title: 'Урок 1: Осетинские пироги',
           description: 'Три главных пирога и их значение в культуре',
           blocks: [
-            TheoryBlock(
+            Block.theory(
               title: 'Символика трёх пирогов',
               contentType: ContentType.text,
               content: '''
@@ -415,13 +417,13 @@ final List<Course> _courses = [
 ![Описание](https://images.gastronom.ru/Sz9Vnc_xr-PdemWxJPXwr_jVm0JfFzt9rBZhu9PTWQc/pr:article-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzQ0NjU2ZjI2LTFmZTMtNDg2Mi1hZjAzLTE2NjQ0ODdmM2I3OS5qcGc.webp)
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Какой пирог считается самым праздничным и сытным?',
               choices: ['Уæлибæх', 'Фыдджын', 'Картофджын', 'Цæхæраджын'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Почему на поминальном столе всегда два пирога, а не три?',
               choices: [
                 'Потому что третий символизирует солнце',
@@ -432,7 +434,7 @@ final List<Course> _courses = [
               correctChoiceIndices: [0],
               allowMultiple: false,
             ),
-            TheoryBlock(
+            Block.theory(
               title: 'Ингредиенты для теста и начинки',
               contentType: ContentType.text,
               content: '''
@@ -453,7 +455,7 @@ final List<Course> _courses = [
 *   Нæ фыдджын тынг хорз у — Наш мясной пирог очень вкусный.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Что означает слово "Цыхт"?',
               choices: ['Мясо', 'Сыр', 'Мука', 'Картофель'],
               correctChoiceIndices: [1],
@@ -465,7 +467,7 @@ final List<Course> _courses = [
           title: 'Урок 2: Мясные блюда и напитки',
           description: 'Традиционные блюда из мяса и что пьют в Осетии',
           blocks: [
-            TheoryBlock(
+            Block.theory(
               title: 'Мясные блюда',
               contentType: ContentType.text,
               content: '''
@@ -482,19 +484,19 @@ final List<Course> _courses = [
 *   Къуыпыл — кефир, традиционный кисломолочный напиток.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Что из перечисленного является мясным блюдом?',
               choices: ['Дзыкка', 'Лывзæ', 'Бæгæны', 'Цывзыдзыкка'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Как называется осетинское пиво?',
               choices: ['Арахъ', 'Къуыпыл', 'Бæгæны', 'Дзыкка'],
               correctChoiceIndices: [2],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Что такое "Цывзыдзыкка"?',
               choices: [
                 'Каша из сыра',
@@ -512,6 +514,7 @@ final List<Course> _courses = [
 
     // КУРС 2: ОСЕТИНСКАЯ ЛЕКСИКА: ПРИРОДА И ЖИВОТНЫЕ
     Course(
+      id: 2,
       name: 'Осетинская лексика: природа и животные',
       description:
           'Учим слова, связанные с горами, погодой, растениями и животными Кавказа.',
@@ -524,7 +527,7 @@ final List<Course> _courses = [
           title: 'Урок 1: Горы, реки и погода',
           description: 'Описываем природу Осетии',
           blocks: [
-            TheoryBlock(
+            Block.theory(
               title: 'Ландшафт',
               contentType: ContentType.text,
               content: '''
@@ -544,19 +547,19 @@ final List<Course> _courses = [
 *   Терчы дон их у — Вода Терека холодная.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Как будет "гора" по-осетински?',
               choices: ['Фæз', 'Хох', 'Дон', 'Цъити'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Что означает слово "Цъити"?',
               choices: ['Река', 'Ледник', 'Скала', 'Поле'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            TheoryBlock(
+            Block.theory(
               title: 'Погодные явления',
               contentType: ContentType.text,
               content: '''
@@ -579,13 +582,13 @@ final List<Course> _courses = [
 *   Абон дымгæ тынг у — Сегодня сильный ветер.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Выберите слово, которое означает "ветер":',
               choices: ['Мигъ', 'Дымгæ', 'Арв', 'Их'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Как переводится "Хур кæсы"?',
               choices: [
                 'Идёт дождь',
@@ -602,7 +605,7 @@ final List<Course> _courses = [
           title: 'Урок 2: Дикие и домашние животные',
           description: 'Животный мир Осетии',
           blocks: [
-            TheoryBlock(
+            Block.theory(
               title: 'Дикие животные Кавказа',
               contentType: ContentType.text,
               content: '''
@@ -623,19 +626,19 @@ final List<Course> _courses = [
 *   Бирæгъ хъæды цæры — Волк живёт в лесу.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Кто из перечисленных — хищник?',
               choices: ['Сæгуыссæ', 'Бирæгъ', 'Царм', 'Уызын'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Как называется горный козёл (тур)?',
               choices: ['Арс', 'Царм', 'Рувас', 'Хъæддаг хуы'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            TheoryBlock(
+            Block.theory(
               title: 'Домашние животные',
               contentType: ContentType.text,
               content: '''
@@ -656,13 +659,13 @@ final List<Course> _courses = [
 *   Мæ куыдз хъазæг у — Моя собака игривая.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Сопоставьте: Хъуг — это...',
               choices: ['Лошадь', 'Овца', 'Корова', 'Коза'],
               correctChoiceIndices: [2],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Какое слово означает "собака"?',
               choices: ['Бæх', 'Гæды', 'Куыдз', 'Фыс'],
               correctChoiceIndices: [2],
@@ -675,6 +678,7 @@ final List<Course> _courses = [
 
     // КУРС 3: ОСЕТИНСКАЯ ЛЕКСИКА: ДОМ И БЫТ
     Course(
+      id: 3,
       name: 'Осетинская лексика: дом и быт',
       description: 'Слова для описания дома, семьи, одежды и повседневных дел.',
       rating: 4.8,
@@ -686,7 +690,7 @@ final List<Course> _courses = [
           title: 'Урок 1: Дом и двор',
           description: 'Описываем жилище и постройки',
           blocks: [
-            TheoryBlock(
+            Block.theory(
               title: 'Традиционный осетинский дом',
               contentType: ContentType.text,
               content: '''
@@ -708,19 +712,19 @@ final List<Course> _courses = [
 *   Дуар сæхгæд у — Дверь закрыта.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Что означает слово "Кæрт"?',
               choices: ['Дом', 'Комната', 'Двор', 'Окно'],
               correctChoiceIndices: [2],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Как по-осетински будет "окно"?',
               choices: ['Дуар', 'Рудзынг', 'Бын', 'Уат'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            TheoryBlock(
+            Block.theory(
               title: 'Мебель и утварь',
               contentType: ContentType.text,
               content: '''
@@ -741,7 +745,7 @@ final List<Course> _courses = [
 *   Уидыг стъолыл æвæрд у — Ложка лежит на столе.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Выберите слово, обозначающее "ложка":',
               choices: ['Кард', 'Къус', 'Уидыг', 'Агуыри'],
               correctChoiceIndices: [2],
@@ -753,7 +757,7 @@ final List<Course> _courses = [
           title: 'Урок 2: Одежда и цвета',
           description: 'Учим названия одежды и основные цвета',
           blocks: [
-            TheoryBlock(
+            Block.theory(
               title: 'Традиционная одежда',
               contentType: ContentType.text,
               content: '''
@@ -778,13 +782,13 @@ final List<Course> _courses = [
 *   Æрвыстон баст æрцыд — Ремень застёгнут.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Что такое "Цухъхъа"?',
               choices: ['Штаны', 'Черкеска', 'Шапка', 'Рубашка'],
               correctChoiceIndices: [1],
               allowMultiple: false,
             ),
-            TheoryBlock(
+            Block.theory(
               title: 'Основные цвета',
               contentType: ContentType.text,
               content: '''
@@ -804,14 +808,14 @@ final List<Course> _courses = [
 *   Уыцы дидинæг сырх у — Тот цветок красный.
 ''',
             ),
-            QuizBlock(
+            Block.quiz(
               title:
                   'Какое слово обозначает одновременно и синий, и зелёный цвет?',
               choices: ['Урс', 'Бур', 'Цъæх', 'Морæ'],
               correctChoiceIndices: [2],
               allowMultiple: false,
             ),
-            QuizBlock(
+            Block.quiz(
               title: 'Как переводится "Сау"?',
               choices: ['Белый', 'Чёрный', 'Красный', 'Жёлтый'],
               correctChoiceIndices: [1],
