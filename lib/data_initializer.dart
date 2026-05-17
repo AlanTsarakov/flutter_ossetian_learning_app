@@ -15,24 +15,24 @@ class DataInitializer {
 
     // Готовим список начальных курсов
     final initialCourses = [
-    // КУРС 1: ОСЕТИНСКАЯ ЛЕКСИКА: ЕДА И КУХНЯ
-    Course(
-      id: 1,
-      name: 'Осетинская лексика: еда и кухня',
-      description: 'Изучаем названия блюд, продуктов и фразы для застолья.',
-      rating: 4.9,
-      author: 'Зарина Кабулова',
-      category: 'Популярное',
-      urlPhoto: "https://photocentra.ru/images/main107/1073032_main.jpg",
-      lessons: [
-        Lesson(
-          title: 'Урок 1: Осетинские пироги',
-          description: 'Три главных пирога и их значение в культуре',
-          blocks: [
-            Block.theory(
-              title: 'Символика трёх пирогов',
-              contentType: ContentType.text,
-              content: '''
+      // КУРС 1: ОСЕТИНСКАЯ ЛЕКСИКА: ЕДА И КУХНЯ
+      Course(
+        id: 1,
+        name: 'Осетинская лексика: еда и кухня',
+        description: 'Изучаем названия блюд, продуктов и фразы для застолья.',
+        rating: 4.9,
+        author: 'Зарина Кабулова',
+        category: 'Популярное',
+        urlPhoto: "https://photocentra.ru/images/main107/1073032_main.jpg",
+        lessons: [
+          Lesson(
+            title: 'Урок 1: Осетинские пироги',
+            description: 'Три главных пирога и их значение в культуре',
+            blocks: [
+              Block.theory(
+                title: 'Символика трёх пирогов',
+                contentType: ContentType.text,
+                content: '''
 Три осетинских пирога на столе символизируют Бога, солнце и землю. На поминальном столе их всегда два — солнце в этом случае не ставят, так как его свет уже не достигает умершего.
 
 ### Основные виды пирогов
@@ -45,28 +45,29 @@ class DataInitializer {
 
 ![Описание](https://images.gastronom.ru/Sz9Vnc_xr-PdemWxJPXwr_jVm0JfFzt9rBZhu9PTWQc/pr:article-cover-image/g:ce/rs:auto:0:0:0/L2Ntcy9hbGwtaW1hZ2VzLzQ0NjU2ZjI2LTFmZTMtNDg2Mi1hZjAzLTE2NjQ0ODdmM2I3OS5qcGc.webp)
 ''',
-            ),
-            Block.quiz(
-              title: 'Какой пирог считается самым праздничным и сытным?',
-              choices: ['Уæлибæх', 'Фыдджын', 'Картофджын', 'Цæхæраджын'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Почему на поминальном столе всегда два пирога, а не три?',
-              choices: [
-                'Потому что третий символизирует солнце',
-                'Потому что так дешевле',
-                'Потому что третий пирог — для гостей',
-                'Потому что так сложилось исторически без причины',
-              ],
-              correctChoiceIndices: [0],
-              allowMultiple: false,
-            ),
-            Block.theory(
-              title: 'Ингредиенты для теста и начинки',
-              contentType: ContentType.text,
-              content: '''
+              ),
+              Block.quiz(
+                title: 'Какой пирог считается самым праздничным и сытным?',
+                choices: ['Уæлибæх', 'Фыдджын', 'Картофджын', 'Цæхæраджын'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title:
+                    'Почему на поминальном столе всегда два пирога, а не три?',
+                choices: [
+                  'Потому что третий символизирует солнце',
+                  'Потому что так дешевле',
+                  'Потому что третий пирог — для гостей',
+                  'Потому что так сложилось исторически без причины',
+                ],
+                correctChoiceIndices: [0],
+                allowMultiple: false,
+              ),
+              Block.theory(
+                title: 'Ингредиенты для теста и начинки',
+                contentType: ContentType.text,
+                content: '''
 Лексика по продуктам:
 
 *   Хъæдур — фасоль
@@ -83,23 +84,48 @@ class DataInitializer {
 *   Æз хъæуы уæлибæх — Я хочу пирог с сыром.
 *   Нæ фыдджын тынг хорз у — Наш мясной пирог очень вкусный.
 ''',
-            ),
-            Block.quiz(
-              title: 'Что означает слово "Цыхт"?',
-              choices: ['Мясо', 'Сыр', 'Мука', 'Картофель'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-          ],
-        ),
-        Lesson(
-          title: 'Урок 2: Мясные блюда и напитки',
-          description: 'Традиционные блюда из мяса и что пьют в Осетии',
-          blocks: [
-            Block.theory(
-              title: 'Мясные блюда',
-              contentType: ContentType.text,
-              content: '''
+              ),
+              Block.quiz(
+                title: 'Что означает слово Цыхт?',
+                choices: ['Мясо', 'Сыр', 'Мука', 'Картофель'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Фыдджын',
+                back: 'Пирог с мясом',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Уæлибæх',
+                back: 'Пирог с сыром',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Цæхæраджын',
+                back: 'Пирог со свекольной ботвой',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Картофджын',
+                back: 'Пирог с картофелем и сыром',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Насджын',
+                back: 'Пирог с тыквой',
+              ),
+            ],
+          ),
+          Lesson(
+            title: 'Урок 2: Мясные блюда и напитки',
+            description: 'Традиционные блюда из мяса и что пьют в Осетии',
+            blocks: [
+              Block.theory(
+                title: 'Мясные блюда',
+                contentType: ContentType.text,
+                content: '''
 Осетинская кухня славится мясными блюдами:
 
 *   Лывзæ — тушёное мясо с картофелем и луком. Густое, наваристое блюдо, которое готовят в казане.
@@ -112,54 +138,99 @@ class DataInitializer {
 *   Арахъ — осетинская самогонка, крепкий напиток из зерна.
 *   Къуыпыл — кефир, традиционный кисломолочный напиток.
 ''',
-            ),
-            Block.quiz(
-              title: 'Что из перечисленного является мясным блюдом?',
-              choices: ['Дзыкка', 'Лывзæ', 'Бæгæны', 'Цывзыдзыкка'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Как называется осетинское пиво?',
-              choices: ['Арахъ', 'Къуыпыл', 'Бæгæны', 'Дзыкка'],
-              correctChoiceIndices: [2],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Что такое "Цывзыдзыкка"?',
-              choices: [
-                'Каша из сыра',
-                'Острый соус из перца',
-                'Тушёное мясо',
-                'Осетинский пирог',
-              ],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-          ],
-        ),
-      ],
-    ),
+              ),
+              Block.quiz(
+                title: 'Что из перечисленного является мясным блюдом?',
+                choices: ['Дзыкка', 'Лывзæ', 'Бæгæны', 'Цывзыдзыкка'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title: 'Как называется осетинское пиво?',
+                choices: ['Арахъ', 'Къуыпыл', 'Бæгæны', 'Дзыкка'],
+                correctChoiceIndices: [2],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title: 'Что такое "Цывзыдзыкка"?',
+                choices: [
+                  'Каша из сыра',
+                  'Острый соус из перца',
+                  'Тушёное мясо',
+                  'Осетинский пирог',
+                ],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Хъæдур',
+                back: 'Фасоль',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Цæхæра',
+                back: 'Свёкла',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Картоф',
+                back: 'Картофель',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Цыхт',
+                back: 'Сыр',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Фыд',
+                back: 'Мясо',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Ссад',
+                back: 'Мука',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Дон',
+                back: 'Вода',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Цæхх',
+                back: 'Соль',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Сæкæр',
+                back: 'Сахар',
+              ),
+            ],
+          ),
+        ],
+      ),
 
-    // КУРС 2: ОСЕТИНСКАЯ ЛЕКСИКА: ПРИРОДА И ЖИВОТНЫЕ
-    Course(
-      id: 2,
-      name: 'Осетинская лексика: природа и животные',
-      description:
-          'Учим слова, связанные с горами, погодой, растениями и животными Кавказа.',
-      rating: 4.7,
-      author: 'Алан Дзампаев',
-      category: 'Популярное',
-      urlPhoto: "https://a.d-cd.net/AFsBdNI-oLjuEU6v8DseCnkB_8U-1920.jpg",
-      lessons: [
-        Lesson(
-          title: 'Урок 1: Горы, реки и погода',
-          description: 'Описываем природу Осетии',
-          blocks: [
-            Block.theory(
-              title: 'Ландшафт',
-              contentType: ContentType.text,
-              content: '''
+      // КУРС 2: ОСЕТИНСКАЯ ЛЕКСИКА: ПРИРОДА И ЖИВОТНЫЕ
+      Course(
+        id: 2,
+        name: 'Осетинская лексика: природа и животные',
+        description:
+            'Учим слова, связанные с горами, погодой, растениями и животными Кавказа.',
+        rating: 4.7,
+        author: 'Алан Дзампаев',
+        category: 'Популярное',
+        urlPhoto: "https://a.d-cd.net/AFsBdNI-oLjuEU6v8DseCnkB_8U-1920.jpg",
+        lessons: [
+          Lesson(
+            title: 'Урок 1: Горы, реки и погода',
+            description: 'Описываем природу Осетии',
+            blocks: [
+              Block.theory(
+                title: 'Ландшафт',
+                contentType: ContentType.text,
+                content: '''
 Осетия — горная страна. Эти слова вы будете слышать постоянно:
 
 *   Хох — гора (во множественном числе: хæхтæ)
@@ -175,23 +246,23 @@ class DataInitializer {
 *   Хох бæрзонд у — Гора высокая.
 *   Терчы дон их у — Вода Терека холодная.
 ''',
-            ),
-            Block.quiz(
-              title: 'Как будет "гора" по-осетински?',
-              choices: ['Фæз', 'Хох', 'Дон', 'Цъити'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Что означает слово "Цъити"?',
-              choices: ['Река', 'Ледник', 'Скала', 'Поле'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.theory(
-              title: 'Погодные явления',
-              contentType: ContentType.text,
-              content: '''
+              ),
+              Block.quiz(
+                title: 'Как будет "гора" по-осетински?',
+                choices: ['Фæз', 'Хох', 'Дон', 'Цъити'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title: 'Что означает слово "Цъити"?',
+                choices: ['Река', 'Ледник', 'Скала', 'Поле'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.theory(
+                title: 'Погодные явления',
+                contentType: ContentType.text,
+                content: '''
 Погода в горах меняется быстро. Полезная лексика:
 
 *   Хур — солнце
@@ -210,34 +281,64 @@ class DataInitializer {
 *   Уарыны фæнды — Похоже, будет дождь.
 *   Абон дымгæ тынг у — Сегодня сильный ветер.
 ''',
-            ),
-            Block.quiz(
-              title: 'Выберите слово, которое означает "ветер":',
-              choices: ['Мигъ', 'Дымгæ', 'Арв', 'Их'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Как переводится "Хур кæсы"?',
-              choices: [
-                'Идёт дождь',
-                'Солнце светит',
-                'Дует ветер',
-                'Небо ясное',
-              ],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-          ],
-        ),
-        Lesson(
-          title: 'Урок 2: Дикие и домашние животные',
-          description: 'Животный мир Осетии',
-          blocks: [
-            Block.theory(
-              title: 'Дикие животные Кавказа',
-              contentType: ContentType.text,
-              content: '''
+              ),
+              Block.quiz(
+                title: 'Выберите слово, которое означает "ветер":',
+                choices: ['Мигъ', 'Дымгæ', 'Арв', 'Их'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title: 'Как переводится "Хур кæсы"?',
+                choices: [
+                  'Идёт дождь',
+                  'Солнце светит',
+                  'Дует ветер',
+                  'Небо ясное',
+                ],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Хох',
+                back: 'Гора',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Цъити',
+                back: 'Ледник',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Фæз',
+                back: 'Равнина, поле',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Дымгæ',
+                back: 'Ветер',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Уарын',
+                back: 'Дождь',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Хур',
+                back: 'Солнце',
+              ),
+            ],
+          ),
+          Lesson(
+            title: 'Урок 2: Дикие и домашние животные',
+            description: 'Животный мир Осетии',
+            blocks: [
+              Block.theory(
+                title: 'Дикие животные Кавказа',
+                contentType: ContentType.text,
+                content: '''
 В горах Осетии обитает много животных. Вот основные названия:
 
 *   Арс — медведь
@@ -254,23 +355,23 @@ class DataInitializer {
 *   Арс уæззау у — Медведь тяжёлый.
 *   Бирæгъ хъæды цæры — Волк живёт в лесу.
 ''',
-            ),
-            Block.quiz(
-              title: 'Кто из перечисленных — хищник?',
-              choices: ['Сæгуыссæ', 'Бирæгъ', 'Царм', 'Уызын'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Как называется горный козёл (тур)?',
-              choices: ['Арс', 'Царм', 'Рувас', 'Хъæддаг хуы'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.theory(
-              title: 'Домашние животные',
-              contentType: ContentType.text,
-              content: '''
+              ),
+              Block.quiz(
+                title: 'Кто из перечисленных — хищник?',
+                choices: ['Сæгуыссæ', 'Бирæгъ', 'Царм', 'Уызын'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title: 'Как называется горный козёл (тур)?',
+                choices: ['Арс', 'Царм', 'Рувас', 'Хъæддаг хуы'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.theory(
+                title: 'Домашние животные',
+                contentType: ContentType.text,
+                content: '''
 Скотоводство — важная часть быта:
 
 *   Хъуг — корова
@@ -279,7 +380,6 @@ class DataInitializer {
 *   Сæгъ — коза
 *   Бæх — лошадь
 *   Хæрæг — осёл
-*   Уыры — крыса (амбарная)
 *   Куыдз — собака
 *   Гæды — кошка
 
@@ -287,42 +387,73 @@ class DataInitializer {
 *   Нæ хъуг бирæ æхсыр дæтты — Наша корова даёт много молока.
 *   Мæ куыдз хъазæг у — Моя собака игривая.
 ''',
-            ),
-            Block.quiz(
-              title: 'Сопоставьте: Хъуг — это...',
-              choices: ['Лошадь', 'Овца', 'Корова', 'Коза'],
-              correctChoiceIndices: [2],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Какое слово означает "собака"?',
-              choices: ['Бæх', 'Гæды', 'Куыдз', 'Фыс'],
-              correctChoiceIndices: [2],
-              allowMultiple: false,
-            ),
-          ],
-        ),
-      ],
-    ),
+              ),
+              Block.quiz(
+                title: 'Сопоставьте: Хъуг — это...',
+                choices: ['Лошадь', 'Овца', 'Корова', 'Коза'],
+                correctChoiceIndices: [2],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title: 'Какое слово означает "собака"?',
+                choices: ['Бæх', 'Гæды', 'Куыдз', 'Фыс'],
+                correctChoiceIndices: [2],
+                allowMultiple: false,
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Арс',
+                back: 'Медведь',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Бирæгъ',
+                back: 'Волк',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Рувас',
+                back: 'Лиса',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Хъуг',
+                back: 'Корова',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Бæх',
+                back: 'Лошадь',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Куыдз',
+                back: 'Собака',
+              ),
+            ],
+          ),
+        ],
+      ),
 
-    // КУРС 3: ОСЕТИНСКАЯ ЛЕКСИКА: ДОМ И БЫТ
-    Course(
-      id: 3,
-      name: 'Осетинская лексика: дом и быт',
-      description: 'Слова для описания дома, семьи, одежды и повседневных дел.',
-      rating: 4.8,
-      author: 'Мадина Дзарахохова',
-      category: 'Популярное',
-      urlPhoto: "https://alpindustria.ru/UserFiles/Image/IMG_5372.jpg",
-      lessons: [
-        Lesson(
-          title: 'Урок 1: Дом и двор',
-          description: 'Описываем жилище и постройки',
-          blocks: [
-            Block.theory(
-              title: 'Традиционный осетинский дом',
-              contentType: ContentType.text,
-              content: '''
+      // КУРС 3: ОСЕТИНСКАЯ ЛЕКСИКА: ДОМ И БЫТ
+      Course(
+        id: 3,
+        name: 'Осетинская лексика: дом и быт',
+        description:
+            'Слова для описания дома, семьи, одежды и повседневных дел.',
+        rating: 4.8,
+        author: 'Мадина Дзарахохова',
+        category: 'Популярное',
+        urlPhoto: "https://alpindustria.ru/UserFiles/Image/IMG_5372.jpg",
+        lessons: [
+          Lesson(
+            title: 'Урок 1: Дом и двор',
+            description: 'Описываем жилище и постройки',
+            blocks: [
+              Block.theory(
+                title: 'Традиционный осетинский дом',
+                contentType: ContentType.text,
+                content: '''
 Традиционное жилище осетин — хæдзар. Это каменный дом с плоской крышей, часто состоящий из нескольких комнат.
 
 Части дома:
@@ -340,23 +471,23 @@ class DataInitializer {
 *   Нæ хæдзар стыр у — Наш дом большой.
 *   Дуар сæхгæд у — Дверь закрыта.
 ''',
-            ),
-            Block.quiz(
-              title: 'Что означает слово "Кæрт"?',
-              choices: ['Дом', 'Комната', 'Двор', 'Окно'],
-              correctChoiceIndices: [2],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Как по-осетински будет "окно"?',
-              choices: ['Дуар', 'Рудзынг', 'Бын', 'Уат'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.theory(
-              title: 'Мебель и утварь',
-              contentType: ContentType.text,
-              content: '''
+              ),
+              Block.quiz(
+                title: 'Что означает слово "Кæрт"?',
+                choices: ['Дом', 'Комната', 'Двор', 'Окно'],
+                correctChoiceIndices: [2],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title: 'Как по-осетински будет "окно"?',
+                choices: ['Дуар', 'Рудзынг', 'Бын', 'Уат'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.theory(
+                title: 'Мебель и утварь',
+                contentType: ContentType.text,
+                content: '''
 Предметы в доме:
 
 *   Стъол — стол
@@ -373,23 +504,53 @@ class DataInitializer {
 *   Къус донæй дзаг у — Чашка полна воды.
 *   Уидыг стъолыл æвæрд у — Ложка лежит на столе.
 ''',
-            ),
-            Block.quiz(
-              title: 'Выберите слово, обозначающее "ложка":',
-              choices: ['Кард', 'Къус', 'Уидыг', 'Агуыри'],
-              correctChoiceIndices: [2],
-              allowMultiple: false,
-            ),
-          ],
-        ),
-        Lesson(
-          title: 'Урок 2: Одежда и цвета',
-          description: 'Учим названия одежды и основные цвета',
-          blocks: [
-            Block.theory(
-              title: 'Традиционная одежда',
-              contentType: ContentType.text,
-              content: '''
+              ),
+              Block.quiz(
+                title: 'Выберите слово, обозначающее "ложка":',
+                choices: ['Кард', 'Къус', 'Уидыг', 'Агуыри'],
+                correctChoiceIndices: [2],
+                allowMultiple: false,
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Хæдзар',
+                back: 'Дом',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Дуар',
+                back: 'Дверь',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Рудзынг',
+                back: 'Окно',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Стъол',
+                back: 'Стол',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Уидыг',
+                back: 'Ложка',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Кард',
+                back: 'Нож',
+              ),
+            ],
+          ),
+          Lesson(
+            title: 'Урок 2: Одежда и цвета',
+            description: 'Учим названия одежды и основные цвета',
+            blocks: [
+              Block.theory(
+                title: 'Традиционная одежда',
+                contentType: ContentType.text,
+                content: '''
 Элементы осетинского костюма:
 
 *   Цухъхъа — черкеска, традиционная мужская верхняя одежда
@@ -410,17 +571,17 @@ class DataInitializer {
 *   Мæ цухъхъа сау у — Моя черкеска чёрная.
 *   Æрвыстон баст æрцыд — Ремень застёгнут.
 ''',
-            ),
-            Block.quiz(
-              title: 'Что такое "Цухъхъа"?',
-              choices: ['Штаны', 'Черкеска', 'Шапка', 'Рубашка'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-            Block.theory(
-              title: 'Основные цвета',
-              contentType: ContentType.text,
-              content: '''
+              ),
+              Block.quiz(
+                title: 'Что такое "Цухъхъа"?',
+                choices: ['Штаны', 'Черкеска', 'Шапка', 'Рубашка'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.theory(
+                title: 'Основные цвета',
+                contentType: ContentType.text,
+                content: '''
 Цвета в осетинском языке:
 
 *   Урс — белый
@@ -436,25 +597,55 @@ class DataInitializer {
 *   Кæрдæг цъæх у — Трава зелёная.
 *   Уыцы дидинæг сырх у — Тот цветок красный.
 ''',
-            ),
-            Block.quiz(
-              title:
-                  'Какое слово обозначает одновременно и синий, и зелёный цвет?',
-              choices: ['Урс', 'Бур', 'Цъæх', 'Морæ'],
-              correctChoiceIndices: [2],
-              allowMultiple: false,
-            ),
-            Block.quiz(
-              title: 'Как переводится "Сау"?',
-              choices: ['Белый', 'Чёрный', 'Красный', 'Жёлтый'],
-              correctChoiceIndices: [1],
-              allowMultiple: false,
-            ),
-          ],
-        ),
-      ],
-    ),
-  ];
+              ),
+              Block.quiz(
+                title:
+                    'Какое слово обозначает одновременно и синий, и зелёный цвет?',
+                choices: ['Урс', 'Бур', 'Цъæх', 'Морæ'],
+                correctChoiceIndices: [2],
+                allowMultiple: false,
+              ),
+              Block.quiz(
+                title: 'Как переводится "Сау"?',
+                choices: ['Белый', 'Чёрный', 'Красный', 'Жёлтый'],
+                correctChoiceIndices: [1],
+                allowMultiple: false,
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Куырæт',
+                back: 'Рубашка',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Хæлаф',
+                back: 'Штаны',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Урс',
+                back: 'Белый',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Сау',
+                back: 'Чёрный',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Сырх',
+                back: 'Красный',
+              ),
+              Block.flashcard(
+                title: 'Запомни слово',
+                front: 'Цъæх',
+                back: 'Синий / Зелёный',
+              ),
+            ],
+          ),
+        ],
+      ),
+    ];
 
     // Сохраняем все курсы в Hive
     final entries = {for (var course in initialCourses) course.id: course};

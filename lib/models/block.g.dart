@@ -25,13 +25,15 @@ class BlockAdapter extends TypeAdapter<Block> {
       choices: (fields[5] as List?)?.cast<String>(),
       correctChoiceIndices: (fields[6] as List?)?.cast<int>(),
       allowMultiple: fields[7] as bool?,
+      back: fields[9] as String?,
+      front: fields[8] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Block obj) {
     writer
-      ..writeByte(8)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -47,7 +49,11 @@ class BlockAdapter extends TypeAdapter<Block> {
       ..writeByte(6)
       ..write(obj.correctChoiceIndices)
       ..writeByte(7)
-      ..write(obj.allowMultiple);
+      ..write(obj.allowMultiple)
+      ..writeByte(8)
+      ..write(obj.front)
+      ..writeByte(9)
+      ..write(obj.back);
   }
 
   @override
@@ -80,6 +86,8 @@ class BlockTypeAdapter extends TypeAdapter<BlockType> {
         return BlockType.fillBlanks;
       case 5:
         return BlockType.matching;
+      case 6:
+        return BlockType.flashcard;
       default:
         return BlockType.theory;
     }
@@ -105,6 +113,9 @@ class BlockTypeAdapter extends TypeAdapter<BlockType> {
         break;
       case BlockType.matching:
         writer.writeByte(5);
+        break;
+      case BlockType.flashcard:
+        writer.writeByte(6);
         break;
     }
   }

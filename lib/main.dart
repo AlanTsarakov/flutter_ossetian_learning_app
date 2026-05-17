@@ -8,7 +8,6 @@ import 'package:flutter_ossetian_learning_app/models/course.dart';
 import 'package:flutter_ossetian_learning_app/models/lesson.dart';
 import 'package:flutter_ossetian_learning_app/repositories/abstract_course_repository.dart';
 import 'package:flutter_ossetian_learning_app/repositories/course_repository_hive.dart';
-import 'package:flutter_ossetian_learning_app/repositories/course_repository_in_memory.dart';
 import 'package:flutter_ossetian_learning_app/repositories/flashcard_repository.dart';
 import 'package:flutter_ossetian_learning_app/theme/theme.dart';
 import 'package:flutter_ossetian_learning_app/theme/util.dart';
@@ -26,7 +25,6 @@ void main() async {
   );
   await Hive.initFlutter();
 
-
   GetIt.instance.registerSingleton(FlashcardRepository());
   Hive.registerAdapter(BlockTypeAdapter());
   Hive.registerAdapter(ContentTypeAdapter());
@@ -34,10 +32,9 @@ void main() async {
   Hive.registerAdapter(LessonAdapter());
   Hive.registerAdapter(CourseAdapter());
 
-  await Hive.openBox<Course>('courses');
+  var box = await Hive.openBox<Course>('courses');
 
   await DataInitializer.populateIfEmpty();
-
 
   runApp(const MyApp());
 }

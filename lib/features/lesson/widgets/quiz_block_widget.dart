@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ossetian_learning_app/models/block.dart';
 
-
 class QuizBlockWidget extends StatefulWidget {
   const QuizBlockWidget({
     super.key,
@@ -22,6 +21,10 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
   final Set<int> _selected = {};
 
   void checkCorrectAnswer(BuildContext context) {
+    if (widget.block.correctChoiceIndices == null) {
+      return;
+    }
+
     bool isCorrect = setEquals(
       _selected,
       widget.block.correctChoiceIndices!.toSet(),
@@ -33,7 +36,6 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
         builder: (context) {
           return Column(
             mainAxisSize: MainAxisSize.min,
-
             children: [
               Padding(
                 padding: .all(16),
@@ -96,6 +98,7 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
           child: Padding(
             padding: .all(16),
             child: Column(
+              mainAxisAlignment: .center,
               children: [
                 const SizedBox(height: 24),
                 Text(
@@ -137,7 +140,7 @@ class _QuizBlockWidgetState extends State<QuizBlockWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TextButton(
-              onPressed: () => {widget.onPrevious()},
+              onPressed: widget.onPrevious,
               child: const Text('Назад'),
             ),
             FilledButton(

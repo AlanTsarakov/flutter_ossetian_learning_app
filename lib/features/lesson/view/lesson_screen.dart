@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ossetian_learning_app/features/lesson/widgets/flashcard_block_widget.dart';
 import 'package:flutter_ossetian_learning_app/features/lesson/widgets/quiz_block_widget.dart';
 import 'package:flutter_ossetian_learning_app/features/lesson/widgets/theory_block_widget.dart';
 import 'package:flutter_ossetian_learning_app/models/block.dart';
@@ -56,6 +57,12 @@ class _LessonScreenState extends State<LessonScreen> {
         );
       case BlockType.quiz:
         return QuizBlockWidget(
+          block: currentBlock,
+          onNext: _goToNextBlock,
+          onPrevious: _goToPreviousBlock,
+        );
+      case BlockType.flashcard:
+        return FlashcardBlockWidget(
           block: currentBlock,
           onNext: _goToNextBlock,
           onPrevious: _goToPreviousBlock,

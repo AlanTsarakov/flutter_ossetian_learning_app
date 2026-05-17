@@ -4,17 +4,26 @@ part 'block.g.dart';
 
 @HiveType(typeId: 2)
 enum BlockType {
-  @HiveField(0) theory,
-  @HiveField(1) quiz,
-  @HiveField(2) trueFalse, 
-  @HiveField(3) textInput, 
-  @HiveField(4) fillBlanks, 
-  @HiveField(5) matching,
+  @HiveField(0)
+  theory,
+  @HiveField(1)
+  quiz,
+  @HiveField(2)
+  trueFalse,
+  @HiveField(3)
+  textInput,
+  @HiveField(4)
+  fillBlanks,
+  @HiveField(5)
+  matching,
+  @HiveField(6)
+  flashcard,
 }
 
 @HiveType(typeId: 3)
 enum ContentType {
-  @HiveField(0) text
+  @HiveField(0)
+  text,
 }
 
 @HiveType(typeId: 4)
@@ -31,19 +40,27 @@ class Block {
   // Поля для теории (nullable)
   @HiveField(3)
   final ContentType? contentType;
-  
+
   @HiveField(4)
   final String? content;
 
   // Поля для теста (nullable)
   @HiveField(5)
   final List<String>? choices;
-  
+
   @HiveField(6)
   final List<int>? correctChoiceIndices;
-  
+
   @HiveField(7)
   final bool? allowMultiple;
+
+  // Поля для карточки
+
+  @HiveField(8)
+  final String? front;
+
+  @HiveField(9)
+  final String? back;
 
   // Главный конструктор делаем приватным, чтобы создавать объекты только через фабрики
   Block({
@@ -55,6 +72,8 @@ class Block {
     this.choices,
     this.correctChoiceIndices,
     this.allowMultiple,
+    this.back,
+    this.front,
   });
 
   // Фабрика для создания теории
@@ -88,6 +107,22 @@ class Block {
       choices: choices,
       correctChoiceIndices: correctChoiceIndices,
       allowMultiple: allowMultiple,
+    );
+  }
+
+  // Фабрика для создания теории
+  factory Block.flashcard({
+    required String title,
+    required String front,
+    required String back,
+    bool isCompleted = false,
+  }) {
+    return Block(
+      title: title,
+      type: BlockType.flashcard,
+      front: front,
+      back: back,
+      isCompleted: isCompleted,
     );
   }
 
